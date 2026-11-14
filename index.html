@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <title>Mate 4° Liceo | Preparación de Exámenes</title>
+  <!-- KaTeX para renderizar fórmulas matemáticas -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+    onload="renderMathInElement(document.body);"></script>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --card-hover: #334155;
+      --primary: #38bdf8;
+      --primary-dark: #0284c7;
+      --whatsapp: #25d366;
+      --whatsapp-dark: #1ebe5d;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 40px; }
+
+    header {
+      background: linear-gradient(135deg, #020617 0%, #1e293b 100%);
+      padding: 20px;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    header h1 { font-size: 1.3rem; color: var(--primary); }
+    header p { font-size: 0.85rem; color: var(--muted); }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 20px 16px; }
+
+    /* Tarjetas de Módulos */
+    .grid-modulos { display: grid; gap: 14px; }
+    .modulo-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      cursor: pointer;
+      transition: transform 0.15s, background 0.15s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modulo-card:hover { background: var(--card-hover); transform: translateY(-2px); }
+    .modulo-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+    .modulo-title { font-size: 1.1rem; font-weight: 600; margin: 4px 0; }
+    .modulo-desc { font-size: 0.85rem; color: var(--muted); }
+
+    /* Vista Interna del Módulo */
+    .hidden { display: none; }
+    .btn-back {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+    }
+    .btn-back:hover { color: var(--text); border-color: var(--text); }
+
+    .teoria-box {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .teoria-box h2 { color: var(--primary); font-size: 1.25rem; margin-bottom: 10px; }
+    .teoria-box h3 { font-size: 1rem; margin: 14px 0 6px; color: #e2e8f0; }
+    .paso-item {
+      background: rgba(15, 23, 42, 0.6);
+      padding: 10px 14px;
+      border-left: 3px solid var(--primary);
+      border-radius: 6px;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+    }
+
+    /* Botonera Dual (Practicar vs Profesor) */
+    .action-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    @media (max-width: 520px) { .action-bar { grid-template-columns: 1fr; } }
+
+    .btn {
+      padding: 14px 16px;
+      border-radius: 10px;
+      border: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.92; }
+    .btn-primary { background: var(--primary); color: #0f172a; }
+    .btn-whatsapp { background: var(--whatsapp); color: #052e16; }
+
+    /* Zona de Ejercicios */
+    .ejercicio-box {
+      background: var(--card);
+      border: 1px solid var(--primary);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+    }
+    .enunciado {
+      font-size: 1.05rem;
+      background: #0f172a;
+      padding: 14px;
+      border-radius: 8px;
+      margin: 12px 0;
+      text-align: center;
+    }
+    .solucion-box {
+      margin-top: 14px;
+      padding: 14px;
+      background: rgba(56, 189, 248, 0.08);
+      border-radius: 8px;
+      border: 1px dashed var(--primary);
+      font-size: 0.92rem;
+    }
+    .mini-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .btn-sm {
+      padding: 9px 14px;
+      font-size: 0.85rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #0f172a;
+      color: var(--text);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Matemática 1° EMS (4° Liceo)</h1>
+  <p>Guía de Estudio y Preparación de Exámenes • Uruguay</p>
+</header>
+
+<div class="container">
+
+  <!-- PANTALLA 1: MENÚ DE MÓDULOS -->
+  <section id="menu-principal">
+    <p style="color: var(--muted); margin-bottom: 16px; font-size: 0.92rem;">
+      Elegí un módulo del programa oficial para repasar la teoría paso a paso, practicar ejercicios o consultar con el profesor.
+    </p>
+
+    <div class="grid-modulos">
+      <div class="modulo-card" onclick="abrirModulo('m1')">
+        <div>
+          <div class="modulo-tag">Módulo 1 • Funciones</div>
+          <div class="modulo-title">1.1 Estudio Analítico y Gráfico (Homográfica)</div>
+          <div class="modulo-desc">Dominio, raíz, ordenada, signo, asíntotas y bosquejo.</div>
+        </div>
+        <span>➔</span>
+      </div>
+
+      <div class="modulo-card" onclick="abrirModulo('m2')">
+        <div>
+          <div class="modulo-tag">Módulo 2 • Álgebra</div>
+          <div class="modulo-title">2.1 Ecuaciones, Inecuaciones y Sistemas 3×3</div>
+          <div class="modulo-desc">Conjunto solución, estudio de signos y escalerización.</div>
+        </div>
+        <span>➔</span>
+      </div>
+
+      <div class="modulo-card" onclick="abrirModulo('m3')">
+        <div>
+          <div class="modulo-tag">Módulo 3 • Trascendentes</div>
+          <div class="modulo-title">3.1 Exponenciales, Logaritmos y Valor Absoluto</div>
+          <div class="modulo-desc">Propiedades, existencia y resolución de ecuaciones.</div>
+        </div>
+        <span>➔</span>
+      </div>
+
+      <div class="modulo-card" onclick="abrirModulo('m4')">
+        <div>
+          <div class="modulo-tag">Módulo 4 • Geometría</div>
+          <div class="modulo-title">4.1 Lugares Geométricos y Arco Capaz</div>
+          <div class="modulo-desc">Mediatriz, bisectriz, circunferencia e intersecciones.</div>
+        </div>
+        <span>➔</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA 2: DETALLE DEL MÓDULO (Ejemplo cargado: Módulo 1.1) -->
+  <section id="vista-modulo" class="hidden">
+    <button class="btn-back" onclick="volverMenu()">← Volver a los Módulos</button>
+
+    <div class="teoria-box" id="contenido-teoria">
+      <!-- Se llena dinámicamente según el módulo -->
+    </div>
+
+    <!-- BOTONERA PRINCIPAL AL TERMINAR DE LEER -->
+    <div class="action-bar">
+      <button class="btn btn-primary" onclick="generarEjercicio()">
+        ✏️ Practicar Ejercicios
+      </button>
+      <a id="btn-wsp-modulo" class="btn btn-whatsapp" target="_blank" rel="noopener">
+        💬 Conectate con el Profesor
+      </a>
+    </div>
+
+    <!-- ÁREA INTERACTIVA DE EJERCICIOS -->
+    <div id="zona-ejercicios" class="ejercicio-box hidden">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <span class="modulo-tag">Práctica de Examen</span>
+        <button class="btn-sm" onclick="generarEjercicio()">🔄 Nuevo ejercicio</button>
+      </div>
+
+      <div class="enunciado" id="texto-enunciado"></div>
+
+      <div class="mini-actions">
+        <button class="btn-sm" style="border-color: var(--primary); color: var(--primary);" onclick="toggleSolucion()">
+          👁️ Ver resolución paso a paso
+        </button>
+        <a id="btn-wsp-ejercicio" class="btn-sm" style="border-color: var(--whatsapp); color: var(--whatsapp); text-decoration:none;" target="_blank" rel="noopener">
+          🆘 Me trancó este ejercicio (Consultar)
+        </a>
+      </div>
+
+      <div id="caja-solucion" class="solucion-box hidden"></div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const TELEFONO_PROFE = "59896643887"; // 096 643 887 en formato internacional
+  let moduloActual = "";
+  let enunciadoActualTexto = "";
+
+  const contenidos = {
+    m1: {
+      titulo: "Módulo 1.1: Función Racional (Homográfica)",
+      html: `
+        <h2>Módulo 1.1: Función Homográfica</h2>
+        <p>Es toda función de la forma $$f(x) = \\frac{ax + b}{cx + d}$$ con $c \\neq 0$ y $ad - bc \\neq 0$. En los exámenes de 4° año siempre se pide su <strong>Estudio Analítico y Representación Gráfica (EAyG)</strong> siguiendo estos 5 pasos:</p>
+        <h3>Paso a paso para el examen:</h3>
+        <div class="paso-item"><strong>1. Dominio:</strong> El denominador no puede ser cero. Igualamos $cx + d = 0 \\Rightarrow x = -\\frac{d}{c}$. Entonces $D(f) = \\mathbb{R} - \\{-\\frac{d}{c}\\}$.</div>
+        <div class="paso-item"><strong>2. Raíz:</strong> Igualamos el numerador a cero ($ax + b = 0$), verificando que pertenezca al dominio.</div>
+        <div class="paso-item"><strong>3. Ordenada en el origen:</strong> Calculamos $f(0) = \\frac{b}{d}$ (si $0 \\in D(f)$).</div>
+        <div class="paso-item"><strong>4. Asíntotas:</strong><br>• Vertical (AV): $x = -\\frac{d}{c}$ (valor excluido del dominio).<br>• Horizontal (AH): $y = \\frac{a}{c}$ (cociente de coeficientes principales).</div>
+        <div class="paso-item"><strong>5. Estudio del Signo:</strong> Se ubican la raíz y el punto de no existencia en un esquema único, comenzando a la derecha con el signo del cociente $\\frac{a}{c}$.</div>
+      `
+    },
+    m2: {
+      titulo: "Módulo 2.1: Ecuaciones, Inecuaciones y Sistemas 3×3",
+      html: `
+        <h2>Módulo 2.1: Álgebra y Sistemas</h2>
+        <p>En este bloque trabajamos con resolución analítica y expresión correcta del <strong>Conjunto Solución ($S$)</strong>.</p>
+        <div class="paso-item"><strong>Inecuaciones racionales:</strong> Nunca pases el denominador multiplicando si contiene la incógnita. Pasá todo a un miembro, reducí a común denominador y estudiá el signo.</div>
+        <div class="paso-item"><strong>Sistemas 3×3:</strong> Aplicá el método de escalerización (Gauss) eliminando una incógnita en dos pares de ecuaciones para reducirlo a un sistema 2×2.</div>
+      `
+    },
+    m3: {
+      titulo: "Módulo 3.1: Exponenciales y Logaritmos",
+      html: `
+        <h2>Módulo 3.1: Funciones Trascendentes</h2>
+        <p>Recordá la definición fundamental: $$\\log_a(b) = c \\iff a^c = b$$ con base $a > 0, a \\neq 1$ y logaritmando $b > 0$.</p>
+        <div class="paso-item"><strong>Clave de examen:</strong> Antes de resolver una ecuación logarítmica, planteá siempre la <strong>condición de existencia</strong> ($b > 0$) para descartar raíces falsas al final.</div>
+      `
+    },
+    m4: {
+      titulo: "Módulo 4.1: Lugares Geométricos",
+      html: `
+        <h2>Módulo 4.1: Lugares Geométricos</h2>
+        <p>Un lugar geométrico es el conjunto de puntos del plano que cumplen una misma propiedad.</p>
+        <div class="paso-item"><strong>Esenciales:</strong> Mediatriz (equidista de dos puntos), Bisectriz (equidista de dos rectas), Circunferencia (distancia fija a un centro) y Arco Capaz (puntos desde donde se ve un segmento bajo un ángulo $\\alpha$).</div>
+      `
+    }
+  };
+
+  function abrirModulo(id) {
+    moduloActual = id;
+    document.getElementById("menu-principal").classList.add("hidden");
+    document.getElementById("vista-modulo").classList.remove("hidden");
+    document.getElementById("zona-ejercicios").classList.add("hidden");
+
+    const data = contenidos[id];
+    document.getElementById("contenido-teoria").innerHTML = data.html;
+
+    // Configurar enlace directo a WhatsApp para consulta general del módulo
+    const msg = encodeURIComponent(`Hola Profe! Estaba repasando el *${data.titulo}* en la app y me gustaría coordinar una clase de apoyo por Zoom.`);
+    document.getElementById("btn-wsp-modulo").href = `https://wa.me/${TELEFONO_PROFE}?text=${msg}`;
+
+    if (window.renderMathInElement) renderMathInElement(document.body);
+  }
+
+  function volverMenu() {
+    document.getElementById("vista-modulo").classList.add("hidden");
+    document.getElementById("menu-principal").classList.remove("hidden");
+  }
+
+  function generarEjercicio() {
+    const zona = document.getElementById("zona-ejercicios");
+    const cajaSol = document.getElementById("caja-solucion");
+    zona.classList.remove("hidden");
+    cajaSol.classList.add("hidden");
+
+    // Generador dinámico de Función Homográfica f(x) = (ax + b)/(x + d)
+    const a = [2, -2, 3, -3, 4][Math.floor(Math.random() * 5)];
+    const raiz = [-3, -2, -1, 1, 2, 3][Math.floor(Math.random() * 6)];
+    const b = -a * raiz; // Asegura raíz entera exacta
+    let noEx = [-2, -1, 1, 2, 3][Math.floor(Math.random() * 5)];
+    if (noEx === raiz) noEx += 1; // Evita función constante
+    const d = -noEx;
+
+    const signoB = b >= 0 ? `+ ${b}` : `- ${Math.abs(b)}`;
+    const signoD = d >= 0 ? `+ ${d}` : `- ${Math.abs(d)}`;
+    const ord = (b / d).toFixed(2).replace(".00", "");
+
+    enunciadoActualTexto = `f(x) = (${a}x ${signoB}) / (x ${signoD})`;
+
+    document.getElementById("texto-enunciado").innerHTML =
+      `Realizá el Estudio Analítico y Gráfico de:<br><br> $$f(x) = \\frac{${a}x ${signoB}}{x ${signoD}}$$`;
+
+    cajaSol.innerHTML = `
+      <strong>Resolución paso a paso:</strong><br><br>
+      1. <strong>Dominio:</strong> $x ${signoD} = 0 \\Rightarrow x = ${noEx}$.<br>
+      &nbsp;&nbsp;&nbsp;$D(f) = \\mathbb{R} - \\{${noEx}\\}$<br>
+      2. <strong>Raíz:</strong> $${a}x ${signoB} = 0 \\Rightarrow x = ${raiz}$<br>
+      3. <strong>Ordenada en el origen:</strong> $f(0) = \\frac{${b}}{${d}} = ${ord}$<br>
+      4. <strong>Asíntotas:</strong> AV: $x = ${noEx}$ &nbsp;|&nbsp; AH: $y = ${a}$<br>
+      5. <strong>Signo:</strong> A la derecha del valor mayor entre (${raiz} y ${noEx}), el signo es <strong>${a > 0 ? "positivo (+)" : "negativo (-)"}</strong> y alterna en cada punto crítico.
+    `;
+
+    // Actualizar enlace de WhatsApp con el ejercicio exacto en el que se trancó
+    const msgEj = encodeURIComponent(`Hola Profe! Me trancó este ejercicio en la app:\n*${enunciadoActualTexto}*\n¿Podemos coordinar una consulta por Zoom?`);
+    document.getElementById("btn-wsp-ejercicio").href = `https://wa.me/${TELEFONO_PROFE}?text=${msgEj}`;
+
+    if (window.renderMathInElement) renderMathInElement(document.body);
+  }
+
+  function toggleSolucion() {
+    document.getElementById("caja-solucion").classList.toggle("hidden");
+  }
+</script>
+
+</body>
+</html>
