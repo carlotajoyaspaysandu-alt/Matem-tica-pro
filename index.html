@@ -4,12 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#0f172a" />
-  <title>Mate 4° Liceo | Preparación de Exámenes</title>
-  <!-- KaTeX para fórmulas matemáticas -->
+  <title>Matemática 1° EMS (4° Liceo) | Preparación de Exámenes - Uruguay</title>
+  
+  <!-- KaTeX para renderizar fórmulas matemáticas con tipografía formal de libros -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
     onload="renderMathInElement(document.body);"></script>
+
   <style>
     :root {
       --bg: #0f172a;
@@ -18,7 +20,6 @@
       --primary: #38bdf8;
       --primary-dark: #0284c7;
       --whatsapp: #25d366;
-      --whatsapp-dark: #1ebe5d;
       --text: #f8fafc;
       --muted: #94a3b8;
       --border: #334155;
@@ -37,12 +38,12 @@
       top: 0;
       z-index: 100;
     }
-    header h1 { font-size: 1.3rem; color: var(--primary); }
-    header p { font-size: 0.85rem; color: var(--muted); }
+    header h1 { font-size: 1.25rem; color: var(--primary); }
+    header p { font-size: 0.82rem; color: var(--muted); }
 
-    .container { max-width: 760px; margin: 0 auto; padding: 20px 16px; }
+    .container { max-width: 780px; margin: 0 auto; padding: 20px 16px; }
 
-    /* Menú de Módulos */
+    /* Menú Principal de Módulos (Alineado al Programa Oficial DGES) */
     .grid-modulos { display: grid; gap: 14px; }
     .modulo-card {
       background: var(--card);
@@ -57,16 +58,16 @@
     }
     .modulo-card:hover { background: var(--card-hover); transform: translateY(-2px); }
     .modulo-tag {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       text-transform: uppercase;
       color: var(--primary);
       letter-spacing: 0.5px;
     }
-    .modulo-title { font-size: 1.05rem; font-weight: 600; margin: 4px 0; }
-    .modulo-desc { font-size: 0.85rem; color: var(--muted); }
+    .modulo-title { font-size: 1.02rem; font-weight: 600; margin: 4px 0; }
+    .modulo-desc { font-size: 0.83rem; color: var(--muted); }
 
-    /* Vista de Módulo */
+    /* Vistas de Módulo */
     .hidden { display: none; }
     .btn-back {
       background: transparent;
@@ -87,18 +88,18 @@
       border: 1px solid var(--border);
       margin-bottom: 20px;
     }
-    .teoria-box h2 { color: var(--primary); font-size: 1.2rem; margin-bottom: 10px; }
-    .teoria-box h3 { font-size: 1rem; margin: 14px 0 6px; color: #e2e8f0; }
+    .teoria-box h2 { color: var(--primary); font-size: 1.15rem; margin-bottom: 10px; }
+    .teoria-box h3 { font-size: 0.98rem; margin: 14px 0 6px; color: #e2e8f0; }
     .paso-item {
       background: rgba(15, 23, 42, 0.6);
       padding: 10px 14px;
       border-left: 3px solid var(--primary);
       border-radius: 6px;
       margin-bottom: 8px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
 
-    /* Reproductor de Audio del Profe */
+    /* Reproductor de Audio del Profesor (Espacios reservados para tus MP3) */
     .audio-profe {
       background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
       border: 1px solid var(--accent);
@@ -121,8 +122,8 @@
       font-weight: bold;
       flex-shrink: 0;
     }
-    .audio-info h4 { font-size: 0.9rem; color: var(--accent); margin-bottom: 2px; }
-    .audio-info p { font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; }
+    .audio-info h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 2px; }
+    .audio-info p { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
     audio { width: 100%; height: 32px; filter: invert(90%) hue-rotate(180deg); }
 
     /* Tarjetas de Ejercicios */
@@ -134,7 +135,7 @@
       margin-bottom: 16px;
     }
     .enunciado {
-      font-size: 1rem;
+      font-size: 0.98rem;
       background: #0f172a;
       padding: 12px;
       border-radius: 8px;
@@ -148,17 +149,17 @@
       background: rgba(56, 189, 248, 0.08);
       border-radius: 8px;
       border: 1px dashed var(--primary);
-      font-size: 0.88rem;
+      font-size: 0.86rem;
     }
 
-    /* Botones y Acciones */
+        /* Botones y Enbudo de WhatsApp */
     .btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
     .btn {
       padding: 10px 14px;
       border-radius: 8px;
       border: none;
       font-weight: 600;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       cursor: pointer;
       text-decoration: none;
       display: inline-flex;
@@ -170,64 +171,73 @@
     .btn-outline:hover { background: var(--card-hover); }
     .btn-whatsapp { background: var(--whatsapp); color: #052e16; font-weight: 700; width: 100%; justify-content: center; margin-top: 16px; padding: 12px; }
 
-    .seccion-titulo { font-size: 1.1rem; color: var(--primary); margin: 24px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+    .seccion-titulo { font-size: 1.05rem; color: var(--primary); margin: 24px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Matemática 1° EMS (4° Liceo)</h1>
-  <p>Preparación de Exámenes • Teoría, Práctica Guiada y Consultas</p>
+  <h1>Matemática 1° EMS (4° Liceo) - Uruguay</h1>
+  <p>Plataforma de Preparación de Exámenes y Apoyo Docente</p>
 </header>
 
 <div class="container">
 
-  <!-- MENÚ PRINCIPAL -->
+  <!-- MENÚ PRINCIPAL CON LOS BLOQUES OFICIALES DEL PROGRAMA -->
   <section id="menu-principal">
-    <p style="color: var(--muted); margin-bottom: 16px; font-size: 0.9rem;">
-      Seleccioná un módulo para ver la teoría formal, escuchar las explicaciones del profesor y practicar con ejercicios de examen resueltos y propuestos.
+    <p style="color: var(--muted); margin-bottom: 16px; font-size: 0.88rem;">
+      Seleccioná un bloque temático oficial del programa 2026 para estudiar la teoría, escuchar los audios del profesor y realizar ejercicios prácticos de examen.
     </p>
 
     <div class="grid-modulos">
       <div class="modulo-card" onclick="cargarModulo('m1')">
         <div>
-          <div class="modulo-tag">Módulo 1 • Análisis</div>
-          <div class="modulo-title">1.1 Funciones Reales y Estudio Analítico (Homográfica)</div>
-          <div class="modulo-desc">Dominio, raíces, ordenada, asíntotas, signo y bosquejo.</div>
+          <div class="modulo-tag">Bloque 1 • Análisis Gráfico</div>
+          <div class="modulo-title">1. Interpretación Gráfica y Estudio de Funciones</div>
+          <div class="modulo-desc">Dominio, recorrido, raíces, signo, crecimiento y asíntotas.</div>
         </div>
         <span>➔</span>
       </div>
 
       <div class="modulo-card" onclick="cargarModulo('m2')">
         <div>
-          <div class="modulo-tag">Módulo 2 • Álgebra</div>
-          <div class="modulo-title">1.2 Ecuaciones, Inecuaciones y Sistemas 3×3</div>
-          <div class="modulo-desc">Conjunto solución, inecuaciones racionales y método de Gauss.</div>
+          <div class="modulo-tag">Bloque 2 • Ecuaciones e Inecuaciones</div>
+          <div class="modulo-title">2. Resolución Gráfica y Conjuntos Solución</div>
+          <div class="modulo-desc">Lectura de intersecciones, inecuaciones racionales y notación.</div>
         </div>
         <span>➔</span>
       </div>
 
       <div class="modulo-card" onclick="cargarModulo('m3')">
         <div>
-          <div class="modulo-tag">Módulo 3 • Trascendentes</div>
-          <div class="modulo-title">1.3 Funciones Exponenciales y Logarítmicas</div>
-          <div class="modulo-desc">Propiedades, condiciones de existencia y resolución algebraica.</div>
+          <div class="modulo-tag">Bloque 3 • Exponenciales y Logaritmos</div>
+          <div class="modulo-title">3. Funciones Exponenciales y Logarítmicas</div>
+          <div class="modulo-desc">Propiedades, condiciones de existencia e inversa.</div>
         </div>
         <span>➔</span>
       </div>
 
       <div class="modulo-card" onclick="cargarModulo('m4')">
         <div>
-          <div class="modulo-tag">Módulo 4 • Geometría</div>
-          <div class="modulo-title">1.4 Lugares Geométricos y Arco Capaz</div>
-          <div class="modulo-desc">Mediatriz, bisectriz, circunferencia y construcciones.</div>
+          <div class="modulo-tag">Bloque 4 • Sistemas Lineales</div>
+          <div class="modulo-title">4. Sistemas de Ecuaciones Lineales 3×3</div>
+          <div class="modulo-desc">Método de Gauss, clasificación e interpretación geométrica.</div>
+        </div>
+        <span>➔</span>
+      </div>
+
+      <div class="modulo-card" onclick="cargarModulo('m5')">
+        <div>
+          <div class="modulo-tag">Bloque 5 • Geometría y Trigonometría</div>
+          <div class="modulo-title">5. Ángulos, Teoremas y Lugares Geométricos</div>
+          <div class="modulo-desc">Circunferencia, teorema del seno, coseno y arco capaz.</div>
         </div>
         <span>➔</span>
       </div>
     </div>
   </section>
 
-  <!-- VISTA INTERNA DE MÓDULOS -->
+  <!-- VISTA INTERNA DINÁMICA DE MÓDULOS -->
   <section id="vista-modulo" class="hidden">
     <button class="btn-back" onclick="volverMenu()">← Volver al Selector de Módulos</button>
     <div id="contenido-modulo-dinamico"></div>
@@ -236,124 +246,138 @@
 </div>
 
 <script>
+    // Tu número de WhatsApp configurado para recibir las consultas desde la app
   const TELEFONO_PROFE = "59896643887"; // 096 643 887
 
   const datosModulos = {
     m1: {
-      titulo: "Módulo 1.1: Estudio Analítico y Gráfico de Función Racional",
+      titulo: "Bloque 1: Interpretación Gráfica de Funciones Reales",
       teoria: `
-        <h2>1. Estructura Teórica y Metodología (EAyG)</h2>
-        <p>Una función racional homográfica se define como $f(x) = \\frac{ax+b}{cx+d}$ con $c \\neq 0$ y $ad-bc \\neq 0$. En todo examen de 4° año se exige seguir estrictamente este orden:</p>
-        <div class="paso-item"><strong>1. Dominio:</strong> Hallar los valores reales donde el denominador se anula y excluirlos: $D(f) = \\mathbb{R} - \\{-d/c\\}$.</div>
-        <div class="paso-item"><strong>2. Raíces (o ceros):</strong> Igualar el numerador a cero ($ax+b=0$) y verificar que pertenezca al dominio.</div>
-        <div class="paso-item"><strong>3. Ordenada en el origen:</strong> Calcular $f(0)$ para ver dónde corta al eje vertical Y.</div>
-        <div class="paso-item"><strong>4. Asíntotas:</strong> Vertical en la raíz del denominador ($x = -d/c$) y Horizontal en el cociente de coeficientes principales ($y = a/c$).</div>
-        <div class="paso-item"><strong>5. Signo:</strong> Ubicar raíces y discontinuidades en la recta real y determinar el signo evaluando intervalos.</div>
+        <h2>1. Objetivos y Metodología Oficial</h2>
+        <p>Según el programa de EMS, el foco principal está en leer, extraer y justificar información directamente de las representaciones gráficas antes de pasar al análisis algebraico formal[span_0](start_span)[span_0](end_span).</p>
+        <div class="paso-item"><strong>Dominio e Imagen:</strong> Lectura directa sobre los ejes X e Y de los valores reales válidos para la función.</div>
+        <div class="paso-item"><strong>Raíces y Ordenada:</strong> Puntos de corte con el eje horizontal ($f(x)=0$) y con el eje vertical ($f(0)$).</div>
+        <div class="paso-item"><strong>Crecimiento y Extremos:</strong> Identificación de intervalos donde la curva sube o baja, reconociendo máximos y mínimos relativos[span_1](start_span)[span_1](end_span).</div>
+        <div class="paso-item"><strong>Asíntotas:</strong> Comportamiento extremo y tendencias hacia el infinito o puntos de no existencia[span_2](start_span)[span_2](end_span).</div>
       `,
       audio: {
-        titulo: "Audio del Profesor: Cómo encarar el EAyG sin caer en trampas",
-        desc: "Escuchá este consejo clave sobre cómo ubicar las asíntotas y el signo en el pizarrón.",
-        // Nota: podés reemplazar el src con un archivo .mp3 real tuyo subido a GitHub
-        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" 
+        titulo: "Audio del Profesor: Cómo interpretar gráficos complejos en los escritos",
+        desc: "Escuchá esta explicación sobre cómo evitar errores frecuentes al leer dominios y asíntotas.",
+        src: "audio_bloque1.mp3"
       },
       ejercicios: [
         {
           tipo: "guiado",
-          enunciado: "Ejercicio 1 (Guiado): Realizar el EAyG de $$f(x) = \\frac{2x - 4}{x + 1}$$",
+          enunciado: "Ejercicio 1 (Guiado): A partir de una función racional homográfica, identificar dominio y asíntotas para $$f(x) = \\frac{2x - 4}{x + 1}$$",
           solucion: `
-            <strong>Paso a paso resuelto:</strong><br>
-            1. <strong>Dominio:</strong> $x + 1 = 0 \\Rightarrow x = -1$. $D(f) = \\mathbb{R} - \\{-1\\}$.<br>
-            2. <strong>Raíz:</strong> $2x - 4 = 0 \\Rightarrow x = 2$.<br>
-            3. <strong>Ordenada:</strong> $f(0) = \\frac{-4}{1} = -4$.<br>
-            4. <strong>Asíntotas:</strong> AV: $x = -1$ | AH: $y = 2$.<br>
-            5. <strong>Signo:</strong> Negativo en $(-\\inf, -1)$, negativo en $(-1, 2)$ y positivo en $(2, +\\inf)$.
+            <strong>Resolución paso a paso:</strong><br>
+            1. <strong>Dominio:</strong> Se excluye la anulación del denominador: $x + 1 = 0 \\Rightarrow x = -1$. $D(f) = \\mathbb{R} - \\{-1\\}$[span_3](start_span)[span_3](end_span).<br>
+            2. <strong>Asíntota Vertical:</strong> $x = -1$.<br>
+            3. <strong>Asíntota Horizontal:</strong> Cociente de coeficientes principales $y = \\frac{2}{1} = 2$.<br>
+            4. <strong>Raíz:</strong> $2x - 4 = 0 \\Rightarrow x = 2$.
           `
         },
         {
           tipo: "propuesto",
-          enunciado: "Ejercicio 2 (Propuesto para resolver): Hallar dominio, raíces, ordenada, asíntotas y signo de $$f(x) = \\frac{3x + 6}{x - 2}$$",
+          enunciado: "Ejercicio 2 (Propuesto): Analizar el gráfico de una función polinómica de 2° grado y determinar intervalos de crecimiento, decrecimiento y extremos.",
           id: "m1_ej2"
-        },
-        {
-          tipo: "propuesto",
-          enunciado: "Ejercicio 3 (Propuesto de examen): Estudiar y representar $$f(x) = \\frac{-x + 3}{2x + 4}$$",
-          id: "m1_ej3"
         }
       ]
     },
     m2: {
-      titulo: "Módulo 1.2: Ecuaciones, Inecuaciones y Sistemas 3×3",
+      titulo: "Bloque 2: Resolución de Ecuaciones e Inecuaciones Gráficas",
       teoria: `
-        <h2>1. Metodología para Álgebra y Sistemas</h2>
-        <p>El manejo correcto del conjunto solución ($S$) es vital en las pruebas de ANEP.</p>
-        <div class="paso-item"><strong>Inecuaciones Racionales:</strong> Nunca pases multiplicando el denominador con incógnita. Pasá todo al primer miembro, hallá común denominador y estudiá el signo del cociente global. La solución son los intervalos que cumplan la desigualdad.</div>
-        <div class="paso-item"><strong>Sistemas 3×3:</strong> Usá reducción (método de Gauss). Eliminá una misma incógnita en dos parejas de ecuaciones para bajarlo a un sistema de dos ecuaciones con dos incógnitas.</div>
+        <h2>2. Enfoque del Programa Oficial</h2>
+        <p>La resolución de ecuaciones e inecuaciones se plantea como una lectura directa de las curvas, observando intersecciones o regiones donde una gráfica se encuentra por encima o por debajo de otra[span_4](start_span)[span_4](end_span).</p>
+        <div class="paso-item"><strong>Ecuaciones del tipo $f(x) = g(x)$:</strong> Buscar visualmente los puntos de intersección entre las curvas.</div>
+        <div class="paso-item"><strong>Inecuaciones del tipo $f(x) > g(x)$:</strong> Determinar los intervalos del eje X donde el gráfico de $f$ está ubicado arriba de $g$.</div>
       `,
       audio: {
-        titulo: "Audio del Profesor: El secreto de las inecuaciones con fracciones",
-        desc: "Escuchá por qué jamás debés simplificar denominadores con incógnitas sin estudiar el signo.",
-        src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+        titulo: "Audio del Profesor: Claves para escribir conjuntos solución en intervalos",
+        desc: "Pautas formales sobre el uso de paréntesis abiertos y corchetes cerrados exigidos en los exámenes.",
+        src: "audio_bloque2.mp3"
       },
       ejercicios: [
         {
           tipo: "guiado",
-          enunciado: "Ejercicio 1 (Guiado): Resolver la inecuación $$\\frac{x - 3}{x + 2} \\geq 0$$",
+          enunciado: "Ejercicio 1 (Guiado): Resolver gráficamente la inecuación racional $$\\frac{x - 3}{x + 2} \\geq 0$$",
           solucion: `
             <strong>Resolución paso a paso:</strong><br>
-            1. Las restricciones indican que $x \\neq -2$.<br>
-            2. Hallamos la raíz del numerador ($x = 3$) y la del denominador ($x = -2$).<br>
-            3. Realizamos el cuadro de signos del cociente.<br>
-            4. <strong>Conjunto Solución:</strong> $S = (-\\infty, -2) \\cup [3, +\\infty)$. (Notar que en -2 el paréntesis es abierto porque no existe división entre cero).
+            1. Restricción del denominador: $x \\neq -2$.<br>
+            2. Raíz del numerador: $x = 3$.<br>
+            3. Analizando los signos de los intervalos, el conjunto solución es: $S = (-\\infty, -2) \\cup [3, +\\infty)$[span_5](start_span)[span_5](end_span).
           `
         },
         {
           tipo: "propuesto",
-          enunciado: "Ejercicio 2 (Propuesto): Resolver en $\\mathbb{R}$ la inecuación $$\\frac{2x + 1}{x - 1} < 3$$",
+          enunciado: "Ejercicio 2 (Propuesto): Hallar los valores de $x$ tales que $f(x) < g(x)$ dadas dos funciones lineales y cuadráticas en un gráfico de examen.",
           id: "m2_ej2"
-        },
-        {
-          tipo: "propuesto",
-          enunciado: "Ejercicio 3 (Propuesto): Resolver el sistema lineal 3×3:\n$\\begin{cases} x + y + z = 6 \\\\ 2x - y + 3z = 14 \\\\ x + 2y - z = 2 \\end{cases}$",
-          id: "m2_ej3"
         }
       ]
     },
     m3: {
-      titulo: "Módulo 1.3: Funciones Exponenciales y Logarítmicas",
+      titulo: "Bloque 3: Funciones Exponenciales y Logarítmicas",
       teoria: `
-        <h2>1. Definiciones y Condiciones de Existencia</h2>
-        <p>Las funciones exponenciales $f(x) = a^x$ y logarítmicas $f(x) = \\log_a(x)$ son inversas entre sí.</p>
-        <div class="paso-item"><strong>Condición de Existencia (Muy importante):</strong> Antes de resolver cualquier ecuación logarítmica, el argumento (lo que está dentro del logaritmo) debe ser estrictamente mayor a cero ($> 0$). Las soluciones que violen esta regla se descartan (raíces extrañas).</div>
-        <div class="paso-item"><strong>Propiedades clave:</strong> $\\log_a(b \\cdot c) = \\log_a(b) + \\log_a(c)$ y $\\log_a(b^n) = n \\cdot \\log_a(b)$.</div>
+        <h2>3. Definiciones y Relación Inversa</h2>
+        <p>Se aborda el crecimiento y decrecimiento exponencial[span_6](start_span)[span_6](end_span), introduciendo el logaritmo como la operación inversa que "revierte" el efecto de la potenciación[span_7](start_span)[span_7](end_span).</p>
+        <div class="paso-item"><strong>Condición de Existencia:</strong> En funciones logarítmicas, el argumento debe ser estrictamente positivo ($>0$), generando inecuaciones para hallar el dominio[span_8](start_span)[span_8](end_span).</div>
+        <div class="paso-item"><strong>Propiedades:</strong> Aplicación de leyes de exponentes y logaritmos para simplificar ecuaciones[span_9](start_span)[span_9](end_span).</div>
       `,
+      audio: {
+        titulo: "Audio del Profesor: El peligro de olvidar la condición de existencia",
+        desc: "Consejos clave para evitar perder puntos por raíces extrañas en ecuaciones logarítmicas.",
+        src: "audio_bloque3.mp3"
+      },
       ejercicios: [
         {
           tipo: "guiado",
           enunciado: "Ejercicio 1 (Guiado): Resolver la ecuación exponencial $$2^{2x} - 5 \\cdot 2^x + 4 = 0$$",
           solucion: `
             <strong>Resolución paso a paso:</strong><br>
-            1. Aplicamos cambio de variable: sea $z = 2^x$ (con $z > 0$).<br>
-            2. La ecuación queda como una cuadrática: $z^2 - 5z + 4 = 0$.<br>
-            3. Sus raíces son $z_1 = 1$ y $z_2 = 4$.<br>
-            4. Deshacemos el cambio: $2^x = 1 \\Rightarrow x = 0$; y $2^x = 4 \\Rightarrow x = 2$.<br>
-            5. Solución final: $S = \\{0, 2\\}$.
+            1. Cambio de variable: sea $z = 2^x$ ($z > 0$).<br>
+            2. Cuadrática resultante: $z^2 - 5z + 4 = 0 \\Rightarrow z_1 = 1, z_2 = 4$.<br>
+            3. Deshaciendo el cambio: $2^x = 1 \\Rightarrow x = 0$ y $2^x = 4 \\Rightarrow x = 2$. $S = \\{0, 2\\}$.
           `
         },
         {
           tipo: "propuesto",
-          enunciado: "Ejercicio 2 (Propuesto): Resolver aplicando condiciones de existencia: $$\\log_2(x) + \\log_2(x - 2) = 3$$",
+          enunciado: "Ejercicio 2 (Propuesto): Resolver aplicando propiedades: $\\log_2(x) + \\log_2(x - 2) = 3$",
           id: "m3_ej2"
         }
       ]
     },
     m4: {
-      titulo: "Módulo 1.4: Lugares Geométricos",
+      titulo: "Bloque 4: Sistemas de Ecuaciones Lineales 3×3",
       teoria: `
-        <h2>1. Conceptos de Lugares Geométricos</h2>
-        <p>Un lugar geométrico es el conjunto de puntos $P(x,y)$ del plano que satisfacen una condición geométrica dada.</p>
-        <div class="paso-item"><strong>Mediatriz:</strong> Lugar geométrico de los puntos que equidistan de dos puntos fijos $A$ y $B$.</div>
-        <div class="paso-item"><strong>Bisectriz:</strong> Lugar geométrico de los puntos que equidistan de dos rectas secantes.</div>
-        <div class="paso-item"><strong>Arco Capaz:</strong> Conjunto de vértices desde los cuales un segmento $AB$ se ve bajo un mismo ángulo $\\alpha$. Se construye usando la mediatriz y perpendicular al segmento en uno de sus extremos.</div>
+        <h2>4. Enfoque Algebraico y Geométrico</h2>
+        <p>Cada ecuación lineal con tres incógnitas representa un plano en el espacio. Resolver un sistema $3\\times3$ equivale a estudiar la intersección de dichos planos[span_10](start_span)[span_10](end_span).</p>
+        <div class="paso-item"><strong>Método de Reducción (Gauss):</strong> Eliminar progresivamente una incógnita entre pares de ecuaciones para reducirlo a un sistema $2\\times2$[span_11](start_span)[span_11](end_span).</div>
+        <div class="paso-item"><strong>Clasificación:</strong> Compatible Determinado (solución única), Compatible Indeterminado (infinitas soluciones) o Incompatible (sin solución)[span_12](start_span)[span_12](end_span)[span_13](start_span)[span_13](end_span).</div>
+      `,
+      ejercicios: [
+        {
+          tipo: "guiado",
+          enunciado: "Ejercicio 1 (Guiado): Resolver el sistema lineal:\n$\\begin{cases} x + y + z = 6 \\\\ 2x - y + 3z = 14 \\\\ x + 2y - z = 2 \\end{cases}$",
+          solucion: `
+            <strong>Resolución paso a paso:</strong><br>
+            1. Aplicando operaciones algebraicas equivalentes (método de Gauss), se escaleriza el sistema.<br>
+            2. Se despejan las incógnitas de abajo hacia arriba obteniendo la terna solución: $x = 1, y = 2, z = 3$.
+          `
+        },
+        {
+          tipo: "propuesto",
+          enunciado: "Ejercicio 2 (Propuesto): Clasificar y resolver un sistema $3\\times3$ donde los planos resulten paralelos (sistema incompatible).",
+          id: "m4_ej2"
+        }
+      ]
+    },
+    m5: {
+      titulo: "Bloque 5: Geometría, Trigonometría y Lugares Geométricos",
+      teoria: `
+        <h2>5. Geometría Avanzada en 4° Año</h2>
+        <p>Estudio de ángulos en la circunferencia, arco capaz, y resolución de triángulos oblicuángulos mediante los teoremas del seno y del coseno[span_14](start_span)[span_14](end_span)[span_15](start_span)[span_15](end_span).</p>
+        <div class="paso-item"><strong>Teorema del Seno:</strong> $\\frac{a}{\\operatorname{sen}(A)} = \\frac{b}{\\operatorname{sen}(B)} = \\frac{c}{\\operatorname{sen}(C)}$[span_16](start_span)[span_16](end_span).</div>
+        <div class="paso-item"><strong>Teorema del Coseno:</strong> $a^2 = b^2 + c^2 - 2bc \\cdot \\cos(\\hat{A})$[span_17](start_span)[span_17](end_span).</div>
       `,
       ejercicios: [
         {
@@ -361,16 +385,15 @@
           enunciado: "Ejercicio 1 (Guiado): Hallar la ecuación de la mediatriz del segmento con extremos $A(1, 2)$ y $B(5, 6)$.",
           solucion: `
             <strong>Resolución paso a paso:</strong><br>
-            1. Hallamos el punto medio $M$ de $AB$: $M = \\left(\\frac{1+5}{2}, \\frac{2+6}{2}\\right) = (3, 4)$.<br>
-            2. Hallamos la pendiente de la recta $AB$: $m_{AB} = \\frac{6-2}{5-1} = \\frac{4}{4} = 1$.<br>
-            3. La pendiente de la mediatriz es la opuesta e inversa: $m_{med} = -1$.<br>
-            4. Ecuación punto-pendiente pasando por $M(3,4)$: $y - 4 = -1(x - 3) \\Rightarrow y = -x + 7$.
+            1. Punto medio $M(3, 4)$.<br>
+            2. Pendiente de $AB = 1$, por lo tanto la pendiente perpendicular es $m = -1$.<br>
+            3. Ecuación punto-pendiente: $y - 4 = -1(x - 3) \\Rightarrow y = -x + 7$.
           `
         },
         {
           tipo: "propuesto",
-          enunciado: "Ejercicio 2 (Propuesto): Describir la construcción geométrica del arco capaz de segmento $AB = 6\\text{ cm}$ y ángulo $\\alpha = 60°$.",
-          id: "m4_ej2"
+          enunciado: "Ejercicio 2 (Propuesto): Resolver un triángulo oblicuángulo conociendo dos lados y el ángulo comprendido aplicando el Teorema del Coseno.",
+          id: "m5_ej2"
         }
       ]
     }
@@ -388,7 +411,6 @@
       </div>
     `;
 
-    // Si el módulo tiene audio del profesor
     if (mod.audio) {
       html += `
         <div class="audio-profe">
@@ -405,13 +427,13 @@
       `;
     }
 
-    html += `<div class="seccion-titulo">Práctica de Examen (Guiada y Propuestos)</div>`;
+    html += `<div class="seccion-titulo">Práctica Orientada para Examen</div>`;
 
     mod.ejercicios.forEach((ej, index) => {
       const idEj = ej.id || `ej_${id}_${index}`;
       html += `
         <div class="ejercicio-card">
-          <span class="modulo-tag">${ej.tipo === 'guiado' ? 'Ejemplo Resuelto' : 'Ejercicio Propuesto para ti'}</span>
+          <span class="modulo-tag">${ej.tipo === 'guiado' ? 'Ejemplo Resuelto' : 'Ejercicio Propuesto'}</span>
           <div class="enunciado">${ej.enunciado}</div>
       `;
 
@@ -424,9 +446,9 @@
         `;
       } else {
         html += `
-          <p style="font-size: 0.85rem; color: var(--muted); margin-top: 8px;">Intentá resolverlo en tu cuaderno aplicando el método explicado arriba. Si te trancás, consultame directo:</p>
+          <p style="font-size: 0.83rem; color: var(--muted); margin-top: 8px;">Intentá resolver este ejercicio en tu cuaderno siguiendo el método oficial. Si te trancás, enviamelo directo:</p>
           <div class="btn-group">
-            <a class="btn btn-whatsapp" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Estaba intentando resolver el ' + ej.enunciado + ' en la app y me trancé. ¿Me das una mano?')}" target="_blank">
+            <a class="btn btn-whatsapp" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Estaba intentando resolver el ' + ej.enunciado + ' en la app y me trancé. ¿Me ayudas?')}" target="_blank">
               💬 Consultar este ejercicio con el Profesor (WhatsApp)
             </a>
           </div>
@@ -436,10 +458,9 @@
       html += `</div>`;
     });
 
-    // Botón de cierre para consulta general del módulo
     html += `
       <a class="btn btn-whatsapp" style="margin-top: 24px;" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Estudié el ' + mod.titulo + ' en la app y quiero coordinar una clase de consulta por Zoom.')}" target="_blank">
-        🚀 Coordinar Clase Particular por Zoom sobre este Módulo
+        🚀 Coordinar Clase Particular por Zoom sobre este Bloque
       </a>
     `;
 
