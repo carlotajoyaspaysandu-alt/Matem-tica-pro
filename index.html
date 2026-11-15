@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0f172a" />
+  <meta name="theme-color" content="#0b0f19" />
   <title>Matemática 1° EMS (4° Liceo) | Preparación de Exámenes - Uruguay</title>
   
   <!-- KaTeX para renderizar fórmulas matemáticas -->
@@ -49,7 +49,7 @@
 
     .container { max-width: 780px; margin: 0 auto; padding: 24px 16px; }
 
-    /* Menú Principal de Módulos con diseño mejorado */
+    /* Menú Principal de Módulos */
     .grid-modulos { display: grid; gap: 16px; }
     .modulo-card {
       background: var(--card);
@@ -108,9 +108,130 @@
       margin-bottom: 10px;
       font-size: 0.9rem;
     }
-  </style>
-</head>
-<body>
+
+    /* Reproductor de Audio */
+    .audio-profe {
+      background: linear-gradient(135deg, #151c2c 0%, #0b0f19 100%);
+      border: 1px solid var(--accent);
+      border-radius: 14px;
+      padding: 18px;
+      margin: 18px 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.1);
+    }
+    .audio-icon {
+      background: var(--accent);
+      color: #0b0f19;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .audio-info h4 { font-size: 0.92rem; color: var(--accent); margin-bottom: 3px; font-weight: 700; }
+    .audio-info p { font-size: 0.82rem; color: var(--muted); margin-bottom: 8px; }
+    audio { width: 100%; height: 34px; filter: invert(90%) hue-rotate(180deg); }
+
+    /* Tarjetas de Ejercicios y Zonas Interactivas */
+    .ejercicio-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .enunciado {
+      font-size: 0.98rem;
+      background: #0b0f19;
+      padding: 14px;
+      border-radius: 10px;
+      margin: 12px 0;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .solucion-box {
+      margin-top: 14px;
+      padding: 14px;
+      background: rgba(56, 189, 248, 0.08);
+      border-radius: 10px;
+      border: 1px dashed var(--primary);
+      font-size: 0.9rem;
+    }
+    
+    /* Autocorrector interactivo */
+    .interactive-box {
+      margin-top: 14px;
+      padding: 16px;
+      background: #0b0f19;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    .interactive-input {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 1rem;
+      width: 130px;
+      text-align: center;
+      margin-right: 10px;
+    }
+    .interactive-input.error { border-color: var(--error); background: rgba(239, 68, 68, 0.1); }
+    .interactive-input.success { border-color: var(--success); background: rgba(34, 197, 94, 0.1); }
+    .feedback-msg {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* Caja de Bloqueo por Límite de Preguntas Gratuitas */
+    .paywall-box {
+      background: linear-gradient(135deg, #1e293b 0%, #0b0f19 100%);
+      border: 2px solid var(--mercadopago);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 18px;
+      box-shadow: 0 10px 25px -5px rgba(0, 158, 227, 0.2);
+    }
+    .paywall-box h3 { color: var(--mercadopago); font-size: 1.25rem; margin-bottom: 10px; font-weight: 800; }
+    .paywall-box p { font-size: 0.92rem; color: var(--muted); margin-bottom: 18px; }
+
+    /* Selector de Clases (+ y -) */
+    .counter-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .counter-btn {
+      background: var(--card-hover);
+      color: var(--text);
+      border: 1px solid var(--border);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .counter-btn:hover { background: var(--primary); color: #0b0f19; transform: scale(1.05); }
+    .counter-value { font-size: 1.3rem; font-weight: 800; min-width: 35px; text-align: center; color: var(--primary); }
+
+    /* Botones principales */
+    .btn {
+      padding: 12px 18px;
+    <body>
 
 <header>
   <h1>Matemática 1° EMS (4° Liceo) - Uruguay</h1>
@@ -180,45 +301,20 @@
   </section>
 
 </div>
-
-<!-- VENTANA EMERGENTE A PANTALLA COMPLETA PARA PAGO -->
-<div id="modal-pago" class="hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(11, 15, 25, 0.95); z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;">
-  <div style="background: var(--card); border: 2px solid var(--mercadopago); border-radius: 16px; padding: 30px; width: 100%; max-width: 600px; text-align: center; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);">
-    <h3 style="color: var(--mercadopago); font-size: 1.4rem; margin-bottom: 12px; font-weight: 800;">💳 Pasarela de Pago Segura</h3>
-    <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 20px;">Estás a un paso de asegurar tus clases personalizadas. Realiza el pago en el botón de abajo y luego presiona el enlace de WhatsApp para coordinar.</p>
-    
-    <div style="background: rgba(15, 23, 42, 0.8); padding: 16px; border-radius: 10px; margin-bottom: 20px; border: 1px solid var(--border);">
-      <div style="font-size: 0.9rem; color: var(--text);">Paquete seleccionado: <strong id="modal-cant-txt" style="color: var(--primary);">1 clase</strong></div>
-      <div style="font-size: 1.1rem; font-weight: bold; color: var(--accent); margin-top: 4px;">Total: $<span id="modal-precio-txt">300</span> UYU</div>
-    </div>
-
-    <a id="modal-btn-mp" class="btn-mercadopago" href="" target="_blank" style="padding: 14px; font-size: 1rem; border-radius: 10px; display: block; text-align: center; margin-bottom: 12px; background: var(--mercadopago); color: #fff; font-weight: 700; text-decoration: none; transition: background 0.2s;">
-      🚀 Pagar Ahora en Mercado Pago
-    </a>
-
-    <a id="modal-btn-wsp" class="btn-whatsapp" href="" target="_blank" style="padding: 14px; font-size: 1rem; border-radius: 10px; display: block; text-align: center; margin-bottom: 20px; background: var(--whatsapp); color: #052e16; font-weight: 700; text-decoration: none; transition: background 0.2s;">
-      💬 Ya realicé el pago, coordinar por WhatsApp
-    </a>
-
-    <button onclick="cerrarModalPago()" style="background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.85rem;">
-      ✕ Volver a la plataforma
-    </button>
-  </div>
-  </div>
-  <script>
+    <script>
   const TELEFONO_PROFE = "59896643887"; // 096 643 887
 
-  // Enlaces de Mercado Pago exactos actualizados por cantidad de clases
+  // Enlaces de Mercado Pago exactos por cantidad de clases (del 1 al 10)
   const LINKS_MERCADOPAGO = {
-    1: "https://mpago.la/1ic1ZyD", // 1 clase ($300)[span_0](start_span)[span_0](end_span)
-    2: "https://mpago.la/2GD6kdf", // 2 clases ($600)
-    3: "https://mpago.la/1Mgx8ZB", // 3 clases ($900)
-    4: "https://mpago.la/28dq2T1", // 4 clases ($1.200)
-    5: "https://mpago.la/1XRpZYf", // 5 clases ($1.500)
-    6: "https://mpago.la/2oATVxh", // 6 clases ($1.800)
-    7: "https://mpago.la/2SKKq9C", // 7 clases ($2.100)
-    8: "https://mpago.la/1aBsmJi", // 8 clases ($2.400)
-    9: "https://mpago.la/1XCz4CK", // 9 clases ($2.700)
+    1: "https://mpago.la/1ic1ZyD",  // 1 clase ($300)
+    2: "https://mpago.la/2GD6kdf",  // 2 clases ($600)
+    3: "https://mpago.la/1Mgx8ZB",  // 3 clases ($900)
+    4: "https://mpago.la/28dq2T1",  // 4 clases ($1.200)
+    5: "https://mpago.la/1XRpZYf",  // 5 clases ($1.500)
+    6: "https://mpago.la/2oATVxh",  // 6 clases ($1.800)
+    7: "https://mpago.la/2SKKq9C",  // 7 clases ($2.100)
+    8: "https://mpago.la/1aBsmJi",  // 8 clases ($2.400)
+    9: "https://mpago.la/1XCz4CK",  // 9 clases ($2.700)
     10: "https://mpago.la/1rkGKuT" // 10 clases ($3.000)
   };
 
@@ -230,7 +326,7 @@
       titulo: "Bloque 1: Interpretación Gráfica de Funciones Reales",
       teoria: `
         <h2>1. Objetivos y Metodología Oficial</h2>
-        <p>Según el programa de EMS, el foco principal está en leer, extraer y justificar información directamente de las representaciones gráficas antes de pasar al análisis algebraico formal[span_1](start_span)[span_1](end_span).</p>
+        <p>Según el programa de EMS, el foco principal está en leer, extraer y justificar información directamente de las representaciones gráficas antes de pasar al análisis algebraico formal.</p>
         <div class="paso-item"><strong>Dominio e Imagen:</strong> Lectura directa sobre los ejes X e Y de los valores reales válidos para la función.</div>
         <div class="paso-item"><strong>Raíces y Ordenada:</strong> Puntos de corte con el eje horizontal ($f(x)=0$) y con el eje vertical ($f(0)$).</div>
       `,
@@ -264,7 +360,7 @@
     },
     m2: {
       titulo: "Bloque 2: Resolución de Ecuaciones e Inecuaciones Gráficas",
-      teoria: `<h2>2. Enfoque del Programa Oficial[span_2](start_span)[span_2](end_span)</h2>`,
+      teoria: `<h2>2. Enfoque del Programa Oficial</h2>`,
       ejercicios: [
         {
           tipo: "interactivo",
@@ -275,7 +371,7 @@
     },
     m3: {
       titulo: "Bloque 3: Funciones Exponenciales y Logarítmicas",
-      teoria: `<h2>3. Definiciones y Relación Inversa[span_3](start_span)[span_3](end_span)</h2>`,
+      teoria: `<h2>3. Definiciones y Relación Inversa</h2>`,
       ejercicios: [
         {
           tipo: "interactivo",
@@ -286,7 +382,7 @@
     },
     m4: {
       titulo: "Bloque 4: Sistemas de Ecuaciones Lineales 3×3",
-      teoria: `<h2>4. Enfoque Algebraico y Geométrico[span_4](start_span)[span_4](end_span)</h2>`,
+      teoria: `<h2>4. Enfoque Algebraico y Geométrico</h2>`,
       ejercicios: [
         {
           tipo: "guiado",
@@ -297,7 +393,7 @@
     },
     m5: {
       titulo: "Bloque 5: Geometría y Trigonometría",
-      teoria: `<h2>5. Geometría Avanzada[span_5](start_span)[span_5](end_span)</h2>`,
+      teoria: `<h2>5. Geometría Avanzada</h2>`,
       ejercicios: [
         {
           tipo: "guiado",
@@ -336,13 +432,13 @@
       `;
     }
 
-    html += `<div class="seccion-titulo" style="font-size: 1.1rem; color: var(--primary); margin: 24px 0 12px; font-weight: 700;">Práctica Interactiva y Exámenes</div>`;
+    html += `<div style="font-size: 1.1rem; color: var(--primary); margin: 24px 0 12px; font-weight: 700;">Práctica Interactiva y Exámenes</div>`;
 
     mod.ejercicios.forEach((ej, index) => {
       const idEj = `ej_${id}_${index}`;
       
       html += `
-        <div class="ejercicio-card" style="background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 16px;">
+        <div class="ejercicio-card">
           <span class="modulo-tag">${ej.tipo === 'interactivo' ? 'Pregunta Práctica' : 'Ejemplo Resuelto'}</span>
           <div class="enunciado">${ej.enunciado}</div>
       `;
@@ -350,42 +446,46 @@
       if (ej.tipo === 'interactivo') {
         if (preguntasRespondidas >= 3) {
           html += `
-            <div class="paywall-box" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 2px solid var(--mercadopago); border-radius: 12px; padding: 20px; text-align: center; margin-top: 16px;">
-              <h3 style="color: var(--mercadopago); font-size: 1.2rem; margin-bottom: 8px; font-weight: 800;">🔒 ¡Alcanzaste el límite de 3 preguntas gratis!</h3>
-              <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 16px;">Para seguir practicando con exámenes reales y asegurar tu nota, contratá clases personalizadas con el profesor.</p>
+            <div class="paywall-box">
+              <h3>🔒 ¡Alcanzaste el límite de 3 preguntas gratis!</h3>
+              <p>Para seguir practicando con exámenes reales y asegurar tu nota, contratá clases personalizadas con el profesor.</p>
               
               <div style="font-weight: 700; font-size: 0.95rem; margin-top: 10px; color: #fff;">¿Cuántas clases querés? ($300 c/u)</div>
-              <div class="counter-container" style="display: flex; align-items: center; justify-content: center; gap: 14px; margin: 14px 0;">
-                <button class="counter-btn" onclick="cambiarCantidad(-1)" style="background: var(--card-hover); color: var(--text); border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; font-weight: bold; font-size: 1.2rem; cursor: pointer;">-</button>
-                <span id="cant-clases" class="counter-value" style="font-size: 1.2rem; font-weight: bold; min-width: 30px; text-align: center;">1</span>
-                <button class="counter-btn" onclick="cambiarCantidad(1)" style="background: var(--card-hover); color: var(--text); border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; font-weight: bold; font-size: 1.2rem; cursor: pointer;">+</button>
+              <div class="counter-container">
+                <button class="counter-btn" onclick="cambiarCantidad(-1)">-</button>
+                <span id="cant-clases" class="counter-value">1</span>
+                <button class="counter-btn" onclick="cambiarCantidad(1)">+</button>
               </div>
-              <div style="font-size: 0.9rem; color: var(--muted); margin-bottom: 16px;">Total a pagar: $<span id="total-precio" style="color: var(--accent); font-weight: bold;">300</span> UYU</div>
+              <div style="font-size: 0.9rem; color: var(--muted); margin-bottom: 16px;">Total a pagar: $<span id="total-precio" style="color: var(--accent); font-weight: 800;">300</span> UYU</div>
 
-              <button onclick="abrirModalPago()" class="btn-mercadopago" style="background: var(--mercadopago); color: #fff; font-weight: 700; width: 100%; justify-content: center; padding: 14px; border-radius: 10px; border: none; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 12px rgba(0, 158, 227, 0.3); transition: background 0.2s;">
+              <a id="btn-pagar-mp" class="btn-mercadopago" href="${LINKS_MERCADOPAGO[1]}" target="_blank">
                 💳 Pagar Clases con Mercado Pago
-              </button>
+              </a>
+
+              <a id="btn-wsp-coord" class="btn-whatsapp" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Ya realicé el pago de 1 clase(s) por Mercado Pago y quiero coordinar día y hora.')}" target="_blank">
+                💬 Ya pagué, coordinar por WhatsApp
+              </a>
             </div>
           `;
         } else {
           html += `
-            <div class="contador-gratis" style="background: rgba(56, 189, 248, 0.1); border: 1px solid var(--primary); padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--primary); display: inline-block; margin-bottom: 12px; font-weight: 600;">Pregunta gratuita N.º ${preguntasRespondidas + 1} de 3</div>
-            <div class="interactive-box" style="margin-top: 12px; padding: 14px; background: #0f172a; border-radius: 8px; border: 1px solid var(--border);">
+            <div class="contador-gratis">Pregunta gratuita N.º ${preguntasRespondidas + 1} de 3</div>
+            <div class="interactive-box">
               <label style="font-size: 0.9rem; display:block; margin-bottom:6px; color: var(--text);">Tu respuesta numérica:</label>
-              <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px;">
-                <input type="text" id="input_${idEj}" class="interactive-input" placeholder="Ej. 2 o -4" style="background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 10px 12px; border-radius: 6px; font-size: 0.95rem; width: 120px; text-align: center;">
-                <button class="btn btn-primary" onclick="verificarRespuesta('${idEj}', '${ej.respuestaCorrecta}')" style="background: var(--primary); color: #0f172a; border: none; padding: 10px 16px; border-radius: 6px; font-weight: 700; cursor: pointer;">Comprobar</button>
+              <div style="display:flex; align-items:center; flex-wrap:wrap; gap:10px;">
+                <input type="text" id="input_${idEj}" class="interactive-input" placeholder="Ej. 2 o -4">
+                <button class="btn btn-primary" onclick="verificarRespuesta('${idEj}', '${ej.respuestaCorrecta}')">Comprobar</button>
               </div>
-              <div id="feedback_${idEj}" class="feedback-msg" style="margin-top: 8px; font-size: 0.85rem; font-weight: 600;"></div>
+              <div id="feedback_${idEj}" class="feedback-msg"></div>
             </div>
           `;
         }
       } else {
         html += `
-          <div class="btn-group" style="margin-top: 12px;">
-            <button class="btn btn-primary" onclick="toggleSol('${idEj}')" style="background: var(--primary); color: #0f172a; border: none; padding: 10px 16px; border-radius: 6px; font-weight: 700; cursor: pointer;">👁️ Ver Solución Paso a Paso</button>
+          <div style="margin-top: 12px;">
+            <button class="btn btn-primary" onclick="toggleSol('${idEj}')">👁️ Ver Solución Paso a Paso</button>
           </div>
-          <div id="${idEj}" class="solucion-box hidden" style="margin-top: 12px; padding: 14px; background: rgba(56, 189, 248, 0.08); border-radius: 8px; border: 1px dashed var(--primary); font-size: 0.9rem;">${ej.solucion}</div>
+          <div id="${idEj}" class="solucion-box hidden">${ej.solucion}</div>
         `;
       }
 
@@ -396,7 +496,8 @@
     if (window.renderMathInElement) renderMathInElement(document.body);
     window.scrollTo(0, 0);
   }
-     function verificarRespuesta(idEj, correcta) {
+
+  function verificarRespuesta(idEj, correcta) {
     const input = document.getElementById(`input_${idEj}`);
     const feedback = document.getElementById(`feedback_${idEj}`);
     const valorUsuario = input.value.trim();
@@ -442,33 +543,21 @@
 
     const elemCant = document.getElementById("cant-clases");
     const elemPrecio = document.getElementById("total-precio");
+    const btnMp = document.getElementById("btn-pagar-mp");
+    const btnWsp = document.getElementById("btn-wsp-coord");
 
     if (elemCant) elemCant.innerText = cantidadClases;
     if (elemPrecio) elemPrecio.innerText = cantidadClases * VALOR_CLASE;
-  }
 
-  // Funciones para la ventana emergente de pago a pantalla completa
-  function abrirModalPago() {
-    const modal = document.getElementById("modal-pago");
-    const modalCantTxt = document.getElementById("modal-cant-txt");
-    const modalPrecioTxt = document.getElementById("modal-precio-txt");
-    const modalBtnMp = document.getElementById("modal-btn-mp");
-    const modalBtnWsp = document.getElementById("modal-btn-wsp");
+    // Actualiza automáticamente el enlace de Mercado Pago según las clases elegidas
+    if (btnMp) {
+      btnMp.href = LINKS_MERCADOPAGO[cantidadClases];
+    }
 
-    modalCantTxt.innerText = cantidadClases + (cantidadClases === 1 ? " clase" : " clases");
-    modalPrecioTxt.innerText = cantidadClases * VALOR_CLASE;
-
-    // Asignar enlace exacto de Mercado Pago según las clases elegidas
-    modalBtnMp.href = LINKS_MERCADOPAGO[cantidadClases];
-
-    // Asignar texto prearmado para WhatsApp con el paquete exacto
-    modalBtnWsp.href = `https://wa.me/${TELEFONO_PROFE}?text=` + encodeURIComponent(`Hola Profe! Ya realicé el pago de ${cantidadClases} clase(s) por Mercado Pago y quiero coordinar día y hora.`);
-
-    modal.classList.remove("hidden");
-  }
-
-  function cerrarModalPago() {
-    document.getElementById("modal-pago").classList.add("hidden");
+    // Actualiza el mensaje prearmado de WhatsApp con la cantidad exacta de clases
+    if (btnWsp) {
+      btnWsp.href = `https://wa.me/${TELEFONO_PROFE}?text=` + encodeURIComponent(`Hola Profe! Ya realicé el pago de ${cantidadClases} clase(s) por Mercado Pago y quiero coordinar día y hora.`);
+    }
   }
 
   function volverMenu() {
@@ -478,10 +567,10 @@
   }
 
   function toggleSol(id) {
-    document.getElementById(id).classList.add("hidden"); // Asegurado de ocultar correctamente
     document.getElementById(id).classList.toggle("hidden");
   }
 </script>
 
 </body>
 </html>
+    
