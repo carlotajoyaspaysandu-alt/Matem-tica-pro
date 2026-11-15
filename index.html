@@ -328,7 +328,7 @@
   let cantidadClases = 1;
   let moduloActual = null;
 
-  // Control de preguntas gratuitas (máximo 3)
+  // Control de preguntas gratuitas (empieza en 0 si no hay registro previo para permitir gastarlas)
   let preguntasRespondidas = parseInt(localStorage.getItem("preguntasRespondidas") || "0", 10);
 
   const datosModulos = {
@@ -499,7 +499,7 @@
     const total = cantidadClases * VALOR_CLASE;
     const linkMp = LINKS_MERCADOPAGO[cantidadClases];
     const textoWsp = encodeURIComponent(
-      `Hola Profe! Ya realicé el pago de ${cantidadClases} clase(s) ($${total} UYU) por Mercado Pago y quiero coordinar día y hora.`
+      `Hola Profe! Ya pagué ${cantidadClases} cuota(s) por un monto de $${total} UYU. Aquí le adjunto el comprobante del pago para coordinar día y hora.`
     );
 
     return `
@@ -520,7 +520,7 @@
         </a>
 
         <a class="btn btn-whatsapp js-link-wsp" href="https://wa.me/${TELEFONO_PROFE}?text=${textoWsp}" target="_blank" rel="noopener noreferrer">
-          💬 Ya pagué, coordinar día y hora por WhatsApp
+          💬 Ya pagué, adjunto comprobante (WhatsApp)
         </a>
       </div>
     `;
@@ -644,7 +644,7 @@
     const total = cantidadClases * VALOR_CLASE;
     const linkMp = LINKS_MERCADOPAGO[cantidadClases];
     const textoWsp = encodeURIComponent(
-      `Hola Profe! Ya realicé el pago de ${cantidadClases} clase(s) ($${total} UYU) por Mercado Pago y quiero coordinar día y hora.`
+      `Hola Profe! Ya pagué ${cantidadClases} cuota(s) por un monto de $${total} UYU. Aquí le adjunto el comprobante del pago para coordinar día y hora.`
     );
 
     document.querySelectorAll(".js-cant-clases").forEach(el => el.innerText = cantidadClases);
