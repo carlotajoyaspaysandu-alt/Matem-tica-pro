@@ -14,13 +14,15 @@
 
   <style>
     :root {
-      --bg: #0f172a;
-      --card: #1e293b;
-      --card-hover: #334155;
+      --bg: #0b0f19;
+      --card: #151c2c;
+      --card-hover: #1e293b;
       --primary: #38bdf8;
       --primary-dark: #0284c7;
-      --whatsapp: #25d366;
+      --whatsapp: #22c55e;
+      --whatsapp-hover: #16a34a;
       --mercadopago: #009ee3;
+      --mercadopago-hover: #0284c7;
       --text: #f8fafc;
       --muted: #94a3b8;
       --border: #334155;
@@ -33,42 +35,44 @@
     body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding-bottom: 40px; }
 
     header {
-      background: linear-gradient(135deg, #020617 0%, #1e293b 100%);
-      padding: 20px;
+      background: linear-gradient(135deg, #020617 0%, #151c2c 100%);
+      padding: 24px 16px;
       border-bottom: 1px solid var(--border);
       text-align: center;
       position: sticky;
       top: 0;
       z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
-    header h1 { font-size: 1.25rem; color: var(--primary); }
-    header p { font-size: 0.82rem; color: var(--muted); }
+    header h1 { font-size: 1.35rem; color: var(--primary); font-weight: 800; letter-spacing: -0.5px; }
+    header p { font-size: 0.85rem; color: var(--muted); margin-top: 4px; }
 
-    .container { max-width: 780px; margin: 0 auto; padding: 20px 16px; }
+    .container { max-width: 780px; margin: 0 auto; padding: 24px 16px; }
 
-    /* Menú Principal de Módulos */
-    .grid-modulos { display: grid; gap: 14px; }
+    /* Menú Principal de Módulos con diseño mejorado */
+    .grid-modulos { display: grid; gap: 16px; }
     .modulo-card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px;
+      border-radius: 14px;
+      padding: 20px;
       cursor: pointer;
-      transition: transform 0.15s, background 0.15s;
+      transition: all 0.2s ease;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
-    .modulo-card:hover { background: var(--card-hover); transform: translateY(-2px); }
+    .modulo-card:hover { background: var(--card-hover); transform: translateY(-3px); border-color: var(--primary); box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.1); }
     .modulo-tag {
-      font-size: 0.72rem;
-      font-weight: 700;
+      font-size: 0.75rem;
+      font-weight: 800;
       text-transform: uppercase;
       color: var(--primary);
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
     }
-    .modulo-title { font-size: 1.02rem; font-weight: 600; margin: 4px 0; }
-    .modulo-desc { font-size: 0.83rem; color: var(--muted); }
+    .modulo-title { font-size: 1.05rem; font-weight: 700; margin: 6px 0; color: #fff; }
+    .modulo-desc { font-size: 0.85rem; color: var(--muted); }
 
     /* Vistas de Módulo */
     .hidden { display: none; }
@@ -76,30 +80,33 @@
       background: transparent;
       border: 1px solid var(--border);
       color: var(--muted);
-      padding: 8px 14px;
-      border-radius: 8px;
+      padding: 10px 16px;
+      border-radius: 10px;
       cursor: pointer;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       font-size: 0.9rem;
+      font-weight: 600;
+      transition: all 0.2s;
     }
-    .btn-back:hover { color: var(--text); border-color: var(--text); }
+    .btn-back:hover { color: var(--text); border-color: var(--primary); background: rgba(56, 189, 248, 0.05); }
 
     .teoria-box {
       background: var(--card);
-      border-radius: 12px;
-      padding: 20px;
+      border-radius: 14px;
+      padding: 24px;
       border: 1px solid var(--border);
       margin-bottom: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
-    .teoria-box h2 { color: var(--primary); font-size: 1.15rem; margin-bottom: 10px; }
-    .teoria-box h3 { font-size: 0.98rem; margin: 14px 0 6px; color: #e2e8f0; }
+    .teoria-box h2 { color: var(--primary); font-size: 1.2rem; margin-bottom: 12px; font-weight: 700; }
+    .teoria-box h3 { font-size: 1rem; margin: 16px 0 8px; color: #e2e8f0; }
     .paso-item {
-      background: rgba(15, 23, 42, 0.6);
-      padding: 10px 14px;
-      border-left: 3px solid var(--primary);
-      border-radius: 6px;
-      margin-bottom: 8px;
-      font-size: 0.88rem;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 12px 16px;
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -114,7 +121,7 @@
 
   <!-- MENÚ PRINCIPAL -->
   <section id="menu-principal">
-    <p style="color: var(--muted); margin-bottom: 16px; font-size: 0.88rem;">
+    <p style="color: var(--muted); margin-bottom: 20px; font-size: 0.9rem;">
       Seleccioná un bloque temático oficial del programa para estudiar la teoría, escuchar los audios del profesor y practicar con preguntas interactivas.
     </p>
 
@@ -125,7 +132,7 @@
           <div class="modulo-title">1. Interpretación Gráfica y Estudio de Funciones</div>
           <div class="modulo-desc">Dominio, recorrido, raíces, signo, crecimiento y asíntotas.</div>
         </div>
-        <span>➔</span>
+        <span style="color: var(--primary); font-weight: bold; font-size: 1.2rem;">➔</span>
       </div>
 
       <div class="modulo-card" onclick="cargarModulo('m2')">
@@ -134,7 +141,7 @@
           <div class="modulo-title">2. Resolución Gráfica y Conjuntos Solución</div>
           <div class="modulo-desc">Lectura de intersecciones, inecuaciones racionales y notación.</div>
         </div>
-        <span>➔</span>
+        <span style="color: var(--primary); font-weight: bold; font-size: 1.2rem;">➔</span>
       </div>
 
       <div class="modulo-card" onclick="cargarModulo('m3')">
@@ -143,7 +150,7 @@
           <div class="modulo-title">3. Funciones Exponenciales y Logarítmicas</div>
           <div class="modulo-desc">Propiedades, condiciones de existencia e inversa.</div>
         </div>
-        <span>➔</span>
+        <span style="color: var(--primary); font-weight: bold; font-size: 1.2rem;">➔</span>
       </div>
 
       <div class="modulo-card" onclick="cargarModulo('m4')">
@@ -152,7 +159,7 @@
           <div class="modulo-title">4. Sistemas de Ecuaciones Lineales 3×3</div>
           <div class="modulo-desc">Método de Gauss, clasificación e interpretación geométrica.</div>
         </div>
-        <span>➔</span>
+        <span style="color: var(--primary); font-weight: bold; font-size: 1.2rem;">➔</span>
       </div>
 
       <div class="modulo-card" onclick="cargarModulo('m5')">
@@ -161,7 +168,7 @@
           <div class="modulo-title">5. Ángulos, Teoremas y Lugares Geométricos</div>
           <div class="modulo-desc">Circunferencia, teorema del seno, coseno y arco capaz.</div>
         </div>
-        <span>➔</span>
+        <span style="color: var(--primary); font-weight: bold; font-size: 1.2rem;">➔</span>
       </div>
     </div>
   </section>
@@ -173,21 +180,46 @@
   </section>
 
 </div>
+
+<!-- VENTANA EMERGENTE A PANTALLA COMPLETA PARA PAGO -->
+<div id="modal-pago" class="hidden" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(11, 15, 25, 0.95); z-index: 1000; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;">
+  <div style="background: var(--card); border: 2px solid var(--mercadopago); border-radius: 16px; padding: 30px; width: 100%; max-width: 600px; text-align: center; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);">
+    <h3 style="color: var(--mercadopago); font-size: 1.4rem; margin-bottom: 12px; font-weight: 800;">💳 Pasarela de Pago Segura</h3>
+    <p style="font-size: 0.95rem; color: var(--muted); margin-bottom: 20px;">Estás a un paso de asegurar tus clases personalizadas. Realiza el pago en el botón de abajo y luego presiona el enlace de WhatsApp para coordinar.</p>
+    
+    <div style="background: rgba(15, 23, 42, 0.8); padding: 16px; border-radius: 10px; margin-bottom: 20px; border: 1px solid var(--border);">
+      <div style="font-size: 0.9rem; color: var(--text);">Paquete seleccionado: <strong id="modal-cant-txt" style="color: var(--primary);">1 clase</strong></div>
+      <div style="font-size: 1.1rem; font-weight: bold; color: var(--accent); margin-top: 4px;">Total: $<span id="modal-precio-txt">300</span> UYU</div>
+    </div>
+
+    <a id="modal-btn-mp" class="btn-mercadopago" href="" target="_blank" style="padding: 14px; font-size: 1rem; border-radius: 10px; display: block; text-align: center; margin-bottom: 12px; background: var(--mercadopago); color: #fff; font-weight: 700; text-decoration: none; transition: background 0.2s;">
+      🚀 Pagar Ahora en Mercado Pago
+    </a>
+
+    <a id="modal-btn-wsp" class="btn-whatsapp" href="" target="_blank" style="padding: 14px; font-size: 1rem; border-radius: 10px; display: block; text-align: center; margin-bottom: 20px; background: var(--whatsapp); color: #052e16; font-weight: 700; text-decoration: none; transition: background 0.2s;">
+      💬 Ya realicé el pago, coordinar por WhatsApp
+    </a>
+
+    <button onclick="cerrarModalPago()" style="background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.85rem;">
+      ✕ Volver a la plataforma
+    </button>
+  </div>
+</div>
 <script>
   const TELEFONO_PROFE = "59896643887"; // 096 643 887
 
-  // Enlaces de Mercado Pago configurados para cada cantidad de clases (de 1 a 10)
+  // Enlaces de Mercado Pago exactos actualizados por cantidad de clases
   const LINKS_MERCADOPAGO = {
-    1: "https://link.mercadopago.com.uy/tuprecio",
-    2: "https://mpago.la/1ic1ZyD",
-    3: "https://mpago.la/1ic1ZyD",
-    4: "https://mpago.la/1ic1ZyD",
-    5: "https://mpago.la/1ic1ZyD",
-    6: "https://mpago.la/1ic1ZyD",
-    7: "https://mpago.la/1ic1ZyD",
-    8: "https://mpago.la/1ic1ZyD",
-    9: "https://mpago.la/1ic1ZyD",
-    10: "https://mpago.la/1ic1ZyD"
+    1: "https://mpago.la/1ic1ZyD", // 1 clase ($300)[span_0](start_span)[span_0](end_span)
+    2: "https://mpago.la/2GD6kdf", // 2 clases ($600)
+    3: "https://mpago.la/1Mgx8ZB", // 3 clases ($900)
+    4: "https://mpago.la/28dq2T1", // 4 clases ($1.200)
+    5: "https://mpago.la/1XRpZYf", // 5 clases ($1.500)
+    6: "https://mpago.la/2oATVxh", // 6 clases ($1.800)
+    7: "https://mpago.la/2SKKq9C", // 7 clases ($2.100)
+    8: "https://mpago.la/1aBsmJi", // 8 clases ($2.400)
+    9: "https://mpago.la/1XCz4CK", // 9 clases ($2.700)
+    10: "https://mpago.la/1rkGKuT" // 10 clases ($3.000)
   };
 
   // Control de preguntas gratuitas (máximo 3)
@@ -198,7 +230,7 @@
       titulo: "Bloque 1: Interpretación Gráfica de Funciones Reales",
       teoria: `
         <h2>1. Objetivos y Metodología Oficial</h2>
-        <p>Según el programa de EMS, el foco principal está en leer, extraer y justificar información directamente de las representaciones gráficas antes de pasar al análisis algebraico formal[span_0](start_span)[span_0](end_span).</p>
+        <p>Según el programa de EMS, el foco principal está en leer, extraer y justificar información directamente de las representaciones gráficas antes de pasar al análisis algebraico formal[span_1](start_span)[span_1](end_span).</p>
         <div class="paso-item"><strong>Dominio e Imagen:</strong> Lectura directa sobre los ejes X e Y de los valores reales válidos para la función.</div>
         <div class="paso-item"><strong>Raíces y Ordenada:</strong> Puntos de corte con el eje horizontal ($f(x)=0$) y con el eje vertical ($f(0)$).</div>
       `,
@@ -232,7 +264,7 @@
     },
     m2: {
       titulo: "Bloque 2: Resolución de Ecuaciones e Inecuaciones Gráficas",
-      teoria: `<h2>2. Enfoque del Programa Oficial[span_1](start_span)[span_1](end_span)</h2>`,
+      teoria: `<h2>2. Enfoque del Programa Oficial[span_2](start_span)[span_2](end_span)</h2>`,
       ejercicios: [
         {
           tipo: "interactivo",
@@ -243,7 +275,7 @@
     },
     m3: {
       titulo: "Bloque 3: Funciones Exponenciales y Logarítmicas",
-      teoria: `<h2>3. Definiciones y Relación Inversa[span_2](start_span)[span_2](end_span)</h2>`,
+      teoria: `<h2>3. Definiciones y Relación Inversa[span_3](start_span)[span_3](end_span)</h2>`,
       ejercicios: [
         {
           tipo: "interactivo",
@@ -254,7 +286,7 @@
     },
     m4: {
       titulo: "Bloque 4: Sistemas de Ecuaciones Lineales 3×3",
-      teoria: `<h2>4. Enfoque Algebraico y Geométrico[span_3](start_span)[span_3](end_span)</h2>`,
+      teoria: `<h2>4. Enfoque Algebraico y Geométrico[span_4](start_span)[span_4](end_span)</h2>`,
       ejercicios: [
         {
           tipo: "guiado",
@@ -265,7 +297,7 @@
     },
     m5: {
       titulo: "Bloque 5: Geometría y Trigonometría",
-      teoria: `<h2>5. Geometría Avanzada[span_4](start_span)[span_4](end_span)</h2>`,
+      teoria: `<h2>5. Geometría Avanzada[span_5](start_span)[span_5](end_span)</h2>`,
       ejercicios: [
         {
           tipo: "guiado",
@@ -304,13 +336,13 @@
       `;
     }
 
-    html += `<div class="seccion-titulo">Práctica Interactiva y Exámenes</div>`;
+    html += `<div class="seccion-titulo" style="font-size: 1.1rem; color: var(--primary); margin: 24px 0 12px; font-weight: 700;">Práctica Interactiva y Exámenes</div>`;
 
     mod.ejercicios.forEach((ej, index) => {
       const idEj = `ej_${id}_${index}`;
       
       html += `
-        <div class="ejercicio-card">
+        <div class="ejercicio-card" style="background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 16px;">
           <span class="modulo-tag">${ej.tipo === 'interactivo' ? 'Pregunta Práctica' : 'Ejemplo Resuelto'}</span>
           <div class="enunciado">${ej.enunciado}</div>
       `;
@@ -318,46 +350,42 @@
       if (ej.tipo === 'interactivo') {
         if (preguntasRespondidas >= 3) {
           html += `
-            <div class="paywall-box">
-              <h3>🔒 ¡Alcanzaste el límite de 3 preguntas gratis!</h3>
-              <p>Para seguir practicando con exámenes reales y asegurar tu nota, contratá clases personalizadas con el profesor.</p>
+            <div class="paywall-box" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); border: 2px solid var(--mercadopago); border-radius: 12px; padding: 20px; text-align: center; margin-top: 16px;">
+              <h3 style="color: var(--mercadopago); font-size: 1.2rem; margin-bottom: 8px; font-weight: 800;">🔒 ¡Alcanzaste el límite de 3 preguntas gratis!</h3>
+              <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 16px;">Para seguir practicando con exámenes reales y asegurar tu nota, contratá clases personalizadas con el profesor.</p>
               
-              <div style="font-weight: 600; font-size: 0.95rem; margin-top: 10px;">¿Cuántas clases querés? ($300 c/u)</div>
-              <div class="counter-container">
-                <button class="counter-btn" onclick="cambiarCantidad(-1)">-</button>
-                <span id="cant-clases" class="counter-value">1</span>
-                <button class="counter-btn" onclick="cambiarCantidad(1)">+</button>
+              <div style="font-weight: 700; font-size: 0.95rem; margin-top: 10px; color: #fff;">¿Cuántas clases querés? ($300 c/u)</div>
+              <div class="counter-container" style="display: flex; align-items: center; justify-content: center; gap: 14px; margin: 14px 0;">
+                <button class="counter-btn" onclick="cambiarCantidad(-1)" style="background: var(--card-hover); color: var(--text); border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; font-weight: bold; font-size: 1.2rem; cursor: pointer;">-</button>
+                <span id="cant-clases" class="counter-value" style="font-size: 1.2rem; font-weight: bold; min-width: 30px; text-align: center;">1</span>
+                <button class="counter-btn" onclick="cambiarCantidad(1)" style="background: var(--card-hover); color: var(--text); border: 1px solid var(--border); width: 40px; height: 40px; border-radius: 50%; font-weight: bold; font-size: 1.2rem; cursor: pointer;">+</button>
               </div>
-              <div style="font-size: 0.85rem; color: var(--muted);">Total a pagar: $<span id="total-precio">300</span>UYU</div>
+              <div style="font-size: 0.9rem; color: var(--muted); margin-bottom: 16px;">Total a pagar: $<span id="total-precio" style="color: var(--accent); font-weight: bold;">300</span> UYU</div>
 
-              <a id="link-mp" class="btn-mercadopago" href="${LINKS_MERCADOPAGO[1]}" target="_blank">
+              <button onclick="abrirModalPago()" class="btn-mercadopago" style="background: var(--mercadopago); color: #fff; font-weight: 700; width: 100%; justify-content: center; padding: 14px; border-radius: 10px; border: none; cursor: pointer; font-size: 1rem; box-shadow: 0 4px 12px rgba(0, 158, 227, 0.3); transition: background 0.2s;">
                 💳 Pagar Clases con Mercado Pago
-              </a>
-
-              <a id="link-wsp-paywall" class="btn btn-whatsapp" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Ya realicé el pago de 1 clase(s) por Mercado Pago y quiero coordinar día y hora.')}" target="_blank">
-                💬 Ya pagué, coordinar por WhatsApp
-              </a>
+              </button>
             </div>
           `;
         } else {
           html += `
-            <div class="contador-gratis">Pregunta gratuita N.º ${preguntasRespondidas + 1} de 3</div>
-            <div class="interactive-box">
-              <label style="font-size: 0.88rem; display:block; margin-bottom:6px;">Tu respuesta numérica:</label>
+            <div class="contador-gratis" style="background: rgba(56, 189, 248, 0.1); border: 1px solid var(--primary); padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; color: var(--primary); display: inline-block; margin-bottom: 12px; font-weight: 600;">Pregunta gratuita N.º ${preguntasRespondidas + 1} de 3</div>
+            <div class="interactive-box" style="margin-top: 12px; padding: 14px; background: #0f172a; border-radius: 8px; border: 1px solid var(--border);">
+              <label style="font-size: 0.9rem; display:block; margin-bottom:6px; color: var(--text);">Tu respuesta numérica:</label>
               <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px;">
-                <input type="text" id="input_${idEj}" class="interactive-input" placeholder="Ej. 2 o -4">
-                <button class="btn btn-primary" onclick="verificarRespuesta('${idEj}', '${ej.respuestaCorrecta}')">Comprobar</button>
+                <input type="text" id="input_${idEj}" class="interactive-input" placeholder="Ej. 2 o -4" style="background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 10px 12px; border-radius: 6px; font-size: 0.95rem; width: 120px; text-align: center;">
+                <button class="btn btn-primary" onclick="verificarRespuesta('${idEj}', '${ej.respuestaCorrecta}')" style="background: var(--primary); color: #0f172a; border: none; padding: 10px 16px; border-radius: 6px; font-weight: 700; cursor: pointer;">Comprobar</button>
               </div>
-              <div id="feedback_${idEj}" class="feedback-msg"></div>
+              <div id="feedback_${idEj}" class="feedback-msg" style="margin-top: 8px; font-size: 0.85rem; font-weight: 600;"></div>
             </div>
           `;
         }
       } else {
         html += `
-          <div class="btn-group">
-            <button class="btn btn-primary" onclick="toggleSol('${idEj}')">👁️ Ver Solución Paso a Paso</button>
+          <div class="btn-group" style="margin-top: 12px;">
+            <button class="btn btn-primary" onclick="toggleSol('${idEj}')" style="background: var(--primary); color: #0f172a; border: none; padding: 10px 16px; border-radius: 6px; font-weight: 700; cursor: pointer;">👁️ Ver Solución Paso a Paso</button>
           </div>
-          <div id="${idEj}" class="solucion-box hidden">${ej.solucion}</div>
+          <div id="${idEj}" class="solucion-box hidden" style="margin-top: 12px; padding: 14px; background: rgba(56, 189, 248, 0.08); border-radius: 8px; border: 1px dashed var(--primary); font-size: 0.9rem;">${ej.solucion}</div>
         `;
       }
 
@@ -368,74 +396,4 @@
     if (window.renderMathInElement) renderMathInElement(document.body);
     window.scrollTo(0, 0);
   }
-    function verificarRespuesta(idEj, correcta) {
-    const input = document.getElementById(`input_${idEj}`);
-    const feedback = document.getElementById(`feedback_${idEj}`);
-    const valorUsuario = input.value.trim();
-
-    if (valorUsuario === "") {
-      input.className = "interactive-input error";
-      feedback.className = "feedback-msg error";
-      feedback.innerHTML = "⚠️ Por favor ingresá un valor.";
-      return;
-    }
-
-    if (valorUsuario === correcta) {
-      input.className = "interactive-input success";
-      feedback.className = "feedback-msg success";
-      feedback.innerHTML = "✅ ¡Correcto!";
-    } else {
-      input.className = "interactive-input error";
-      feedback.className = "feedback-msg error";
-      feedback.innerHTML = "❌ Incorrecto.";
-    }
-
-    preguntasRespondidas++;
-    localStorage.setItem("preguntasRespondidas", preguntasRespondidas);
-
-    if (preguntasRespondidas >= 3) {
-      setTimeout(() => {
-        alert("¡Has completado tus 3 preguntas gratuitas! A continuación se abrirán las opciones de clases personalizadas.");
-        location.reload();
-      }, 1200);
-    }
-  }
-
-  let cantidadClases = 1;
-  const VALOR_CLASE = 300;
-
-  function cambiarCantidad(cambio) {
-    cantidadClases += cambio;
-    if (cantidadClases < 1) cantidadClases = 1;
-    if (cantidadClases > 10) cantidadClases = 10;
-
-    const elemCant = document.getElementById("cant-clases");
-    const elemPrecio = document.getElementById("total-precio");
-    const elemLinkMp = document.getElementById("link-mp");
-    const elemLinkWsp = document.getElementById("link-wsp-paywall");
-
-    if (elemCant) elemCant.innerText = cantidadClases;
-    if (elemPrecio) elemPrecio.innerText = cantidadClases * VALOR_CLASE;
-    
-    if (elemLinkMp && LINKS_MERCADOPAGO[cantidadClases]) {
-      elemLinkMp.href = LINKS_MERCADOPAGO[cantidadClases];
-    }
-    
-    if (elemLinkWsp) {
-      elemLinkWsp.href = `https://wa.me/${TELEFONO_PROFE}?text=` + encodeURIComponent(`Hola Profe! Ya realicé el pago de ${cantidadClases} clase(s) por Mercado Pago y quiero coordinar día y hora.`);
-    }
-  }
-
-  function volverMenu() {
-    document.getElementById("vista-modulo").classList.add("hidden");
-    document.getElementById("menu-principal").classList.remove("hidden");
-    window.scrollTo(0, 0);
-  }
-
-  function toggleSol(id) {
-    document.getElementById(id).classList.toggle("hidden");
-  }
-</script>
-
-</body>
-</html>
+  
