@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0f172a" />
   <title>Matemática 1° EMS (4° Liceo) | Preparación de Exámenes - Uruguay</title>
   
-  <!-- KaTeX para renderizar fórmulas matemáticas con tipografía formal de libros -->
+  <!-- KaTeX para renderizar fórmulas matemáticas con tipografía formal -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -99,7 +99,7 @@
       font-size: 0.88rem;
     }
 
-    /* Reproductor de Audio del Profesor (Espacios reservados para tus MP3) */
+    /* Reproductor de Audio del Profesor */
     .audio-profe {
       background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
       border: 1px solid var(--accent);
@@ -152,7 +152,7 @@
       font-size: 0.86rem;
     }
 
-        /* Botones y Enbudo de WhatsApp */
+    /* Botones y Embudo de WhatsApp */
     .btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
     .btn {
       padding: 10px 14px;
@@ -246,7 +246,7 @@
 </div>
 
 <script>
-    // Tu número de WhatsApp configurado para recibir las consultas desde la app
+  // Tu número de WhatsApp configurado para recibir las consultas desde la app
   const TELEFONO_PROFE = "59896643887"; // 096 643 887
 
   const datosModulos = {
@@ -261,9 +261,9 @@
         <div class="paso-item"><strong>Asíntotas:</strong> Comportamiento extremo y tendencias hacia el infinito o puntos de no existencia[span_2](start_span)[span_2](end_span).</div>
       `,
       audio: {
-        titulo: "Audio del Profesor: Cómo interpretar gráficos complejos en los escritos",
-        desc: "Escuchá esta explicación sobre cómo evitar errores frecuentes al leer dominios y asíntotas.",
-        src: "audio_bloque1.mp3"
+        titulo: "Audio del Profesor: Explicación de la Función Exponencial",
+        desc: "Escuchá esta explicación para comprender el comportamiento gráfico y analítico.",
+        src: "https://raw.githubusercontent.com/carlotajoyaspaysandu-alt/Matem-tica-pro/bf611df5b07b47e153ceaf010c0924b0d9a7d51e/Funci_n_Exponencial%20(1).mp3"
       },
       ejercicios: [
         {
@@ -295,7 +295,7 @@
       audio: {
         titulo: "Audio del Profesor: Claves para escribir conjuntos solución en intervalos",
         desc: "Pautas formales sobre el uso de paréntesis abiertos y corchetes cerrados exigidos en los exámenes.",
-        src: "audio_bloque2.mp3"
+        src: "audio_bloque2.mp3" // Podés reemplazarlo cuando subas el siguiente audio
       },
       ejercicios: [
         {
@@ -448,7 +448,8 @@
         html += `
           <p style="font-size: 0.83rem; color: var(--muted); margin-top: 8px;">Intentá resolver este ejercicio en tu cuaderno siguiendo el método oficial. Si te trancás, enviamelo directo:</p>
           <div class="btn-group">
-            <a class="btn btn-whatsapp" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Estaba intentando resolver el ' + ej.enunciado + ' en la app y me trancé. ¿Me ayudas?')}" target="_blank">
+            <a class="btn btn-whatsapp" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Estaba intentando resolver el ' + ej.enunciado + ' en la app y me trancé. ¿Me ayudas?')}" 
+            taprget=" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Estaba intentando resolver el ' + ej.enunciado + ' en la app y me trancé. ¿Me ayudas?')}" target="_blank">
               💬 Consultar este ejercicio con el Profesor (WhatsApp)
             </a>
           </div>
