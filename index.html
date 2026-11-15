@@ -204,8 +204,8 @@
       ✕ Volver a la plataforma
     </button>
   </div>
-</div>
-<script>
+  </div>
+  <script>
   const TELEFONO_PROFE = "59896643887"; // 096 643 887
 
   // Enlaces de Mercado Pago exactos actualizados por cantidad de clases
@@ -396,4 +396,92 @@
     if (window.renderMathInElement) renderMathInElement(document.body);
     window.scrollTo(0, 0);
   }
-  
+     function verificarRespuesta(idEj, correcta) {
+    const input = document.getElementById(`input_${idEj}`);
+    const feedback = document.getElementById(`feedback_${idEj}`);
+    const valorUsuario = input.value.trim();
+
+    if (valorUsuario === "") {
+      input.className = "interactive-input error";
+      feedback.className = "feedback-msg error";
+      feedback.style.color = "var(--error)";
+      feedback.innerHTML = "⚠️ Por favor ingresá un valor.";
+      return;
+    }
+
+    if (valorUsuario === correcta) {
+      input.className = "interactive-input success";
+      feedback.className = "feedback-msg success";
+      feedback.style.color = "var(--success)";
+      feedback.innerHTML = "✅ ¡Correcto!";
+    } else {
+      input.className = "interactive-input error";
+      feedback.className = "feedback-msg error";
+      feedback.style.color = "var(--error)";
+      feedback.innerHTML = "❌ Incorrecto.";
+    }
+
+    preguntasRespondidas++;
+    localStorage.setItem("preguntasRespondidas", preguntasRespondidas);
+
+    if (preguntasRespondidas >= 3) {
+      setTimeout(() => {
+        alert("¡Has completado tus 3 preguntas gratuitas! A continuación se abrirán las opciones de clases personalizadas.");
+        location.reload();
+      }, 1200);
+    }
+  }
+
+  let cantidadClases = 1;
+  const VALOR_CLASE = 300;
+
+  function cambiarCantidad(cambio) {
+    cantidadClases += cambio;
+    if (cantidadClases < 1) cantidadClases = 1;
+    if (cantidadClases > 10) cantidadClases = 10;
+
+    const elemCant = document.getElementById("cant-clases");
+    const elemPrecio = document.getElementById("total-precio");
+
+    if (elemCant) elemCant.innerText = cantidadClases;
+    if (elemPrecio) elemPrecio.innerText = cantidadClases * VALOR_CLASE;
+  }
+
+  // Funciones para la ventana emergente de pago a pantalla completa
+  function abrirModalPago() {
+    const modal = document.getElementById("modal-pago");
+    const modalCantTxt = document.getElementById("modal-cant-txt");
+    const modalPrecioTxt = document.getElementById("modal-precio-txt");
+    const modalBtnMp = document.getElementById("modal-btn-mp");
+    const modalBtnWsp = document.getElementById("modal-btn-wsp");
+
+    modalCantTxt.innerText = cantidadClases + (cantidadClases === 1 ? " clase" : " clases");
+    modalPrecioTxt.innerText = cantidadClases * VALOR_CLASE;
+
+    // Asignar enlace exacto de Mercado Pago según las clases elegidas
+    modalBtnMp.href = LINKS_MERCADOPAGO[cantidadClases];
+
+    // Asignar texto prearmado para WhatsApp con el paquete exacto
+    modalBtnWsp.href = `https://wa.me/${TELEFONO_PROFE}?text=` + encodeURIComponent(`Hola Profe! Ya realicé el pago de ${cantidadClases} clase(s) por Mercado Pago y quiero coordinar día y hora.`);
+
+    modal.classList.remove("hidden");
+  }
+
+  function cerrarModalPago() {
+    document.getElementById("modal-pago").classList.add("hidden");
+  }
+
+  function volverMenu() {
+    document.getElementById("vista-modulo").classList.add("hidden");
+    document.getElementById("menu-principal").classList.remove("hidden");
+    window.scrollTo(0, 0);
+  }
+
+  function toggleSol(id) {
+    document.getElementById(id).classList.add("hidden"); // Asegurado de ocultar correctamente
+    document.getElementById(id).classList.toggle("hidden");
+  }
+</script>
+
+</body>
+</html>
