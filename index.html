@@ -101,153 +101,6 @@
       margin-bottom: 8px;
       font-size: 0.88rem;
     }
-
-    /* Reproductor de Audio */
-    .audio-profe {
-      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      border: 1px solid var(--accent);
-      border-radius: 12px;
-      padding: 16px;
-      margin: 16px 0;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .audio-icon {
-      background: var(--accent);
-      color: #0f172a;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      flex-shrink: 0;
-    }
-    .audio-info h4 { font-size: 0.88rem; color: var(--accent); margin-bottom: 2px; }
-    .audio-info p { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
-    audio { width: 100%; height: 32px; filter: invert(90%) hue-rotate(180deg); }
-
-    /* Tarjetas de Ejercicios y Zonas Interactivas */
-    .ejercicio-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 18px;
-      margin-bottom: 16px;
-    }
-    .enunciado {
-      font-size: 0.98rem;
-      background: #0f172a;
-      padding: 12px;
-      border-radius: 8px;
-      margin: 10px 0;
-      text-align: center;
-      border: 1px solid var(--border);
-    }
-    .solucion-box {
-      margin-top: 12px;
-      padding: 12px;
-      background: rgba(56, 189, 248, 0.08);
-      border-radius: 8px;
-      border: 1px dashed var(--primary);
-      font-size: 0.86rem;
-    }
-    
-    /* Autocorrector interactivo */
-    .interactive-box {
-      margin-top: 12px;
-      padding: 14px;
-      background: #0f172a;
-      border-radius: 8px;
-      border: 1px solid var(--border);
-    }
-    .interactive-input {
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      width: 100px;
-      text-align: center;
-      margin-right: 8px;
-    }
-    .interactive-input.error { border-color: var(--error); background: rgba(239, 68, 68, 0.1); }
-    .interactive-input.success { border-color: var(--success); background: rgba(34, 197, 94, 0.1); }
-    .feedback-msg {
-      margin-top: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
-    }
-    .feedback-msg.error { color: var(--error); }
-    .feedback-msg.success { color: var(--success); }
-
-    /* Caja de Bloqueo por Límite de Preguntas Gratuitas */
-    .paywall-box {
-      background: linear-gradient(135deg, #1e293b 100%, #0f172a 0%);
-      border: 2px solid var(--mercadopago);
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      margin-top: 16px;
-    }
-    .paywall-box h3 { color: var(--mercadopago); font-size: 1.1rem; margin-bottom: 8px; }
-    .paywall-box p { font-size: 0.88rem; color: var(--muted); margin-bottom: 16px; }
-
-    /* Selector de Clases (+ y -) */
-    .counter-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 12px;
-      margin: 14px 0;
-    }
-    .counter-btn {
-      background: var(--card-hover);
-      color: var(--text);
-      border: 1px solid var(--border);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-weight: bold;
-      font-size: 1.1rem;
-      cursor: pointer;
-    }
-    .counter-btn:hover { background: var(--primary); color: #0f172a; }
-    .counter-value { font-size: 1.1rem; font-weight: bold; min-width: 30px; text-align: center; }
-
-    /* Botones y Mercadopago / WhatsApp */
-    .btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
-    .btn {
-      padding: 10px 14px;
-      border-radius: 8px;
-      border: none;
-      font-weight: 600;
-      font-size: 0.86rem;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .btn-primary { background: var(--primary); color: #0f172a; }
-    .btn-mercadopago { background: var(--mercadopago); color: #fff; font-weight: 700; width: 100%; justify-content: center; padding: 12px; text-decoration: none; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; }
-    .btn-whatsapp { background: var(--whatsapp); color: #052e16; font-weight: 700; width: 100%; justify-content: center; margin-top: 16px; padding: 12px; }
-
-    .seccion-titulo { font-size: 1.05rem; color: var(--primary); margin: 24px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
-    
-    .contador-gratis {
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid var(--primary);
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: var(--primary);
-      display: inline-block;
-      margin-bottom: 12px;
-    }
   </style>
 </head>
 <body>
@@ -320,22 +173,21 @@
   </section>
 
 </div>
-
 <script>
   const TELEFONO_PROFE = "59896643887"; // 096 643 887
 
   // Enlaces de Mercado Pago configurados para cada cantidad de clases (de 1 a 10)
   const LINKS_MERCADOPAGO = {
-    1: "https://link.mercadopago.com.uy/tuprecio", // Reemplazá este si tenés el link específico de 1 clase ($300)
-    2: "https://mpago.la/1ic1ZyD", // 2 clases ($600)
-    3: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 3 clases ($900)
-    4: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 4 clases ($1.200)
-    5: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 5 clases ($1.500)
-    6: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 6 clases ($1.800)
-    7: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 7 clases ($2.100)
-    8: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 8 clases ($2.400)
-    9: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 9 clases ($2.700)
-    10: "https://mpago.la/1ic1ZyD" // Reemplazá con el link real de 10 clases ($3.000)
+    1: "https://link.mercadopago.com.uy/tuprecio",
+    2: "https://mpago.la/1ic1ZyD",
+    3: "https://mpago.la/1ic1ZyD",
+    4: "https://mpago.la/1ic1ZyD",
+    5: "https://mpago.la/1ic1ZyD",
+    6: "https://mpago.la/1ic1ZyD",
+    7: "https://mpago.la/1ic1ZyD",
+    8: "https://mpago.la/1ic1ZyD",
+    9: "https://mpago.la/1ic1ZyD",
+    10: "https://mpago.la/1ic1ZyD"
   };
 
   // Control de preguntas gratuitas (máximo 3)
@@ -346,7 +198,7 @@
       titulo: "Bloque 1: Interpretación Gráfica de Funciones Reales",
       teoria: `
         <h2>1. Objetivos y Metodología Oficial</h2>
-        <p>Según el programa de EMS, el foco principal está en leer, extraer y justificar información directamente de las representaciones gráficas antes de pasar al análisis algebraico formal.</p>
+        <p>Según el programa de EMS, el foco principal está en leer, extraer y justificar información directamente de las representaciones gráficas antes de pasar al análisis algebraico formal[span_0](start_span)[span_0](end_span).</p>
         <div class="paso-item"><strong>Dominio e Imagen:</strong> Lectura directa sobre los ejes X e Y de los valores reales válidos para la función.</div>
         <div class="paso-item"><strong>Raíces y Ordenada:</strong> Puntos de corte con el eje horizontal ($f(x)=0$) y con el eje vertical ($f(0)$).</div>
       `,
@@ -380,7 +232,7 @@
     },
     m2: {
       titulo: "Bloque 2: Resolución de Ecuaciones e Inecuaciones Gráficas",
-      teoria: `<h2>2. Enfoque del Programa Oficial</h2>`,
+      teoria: `<h2>2. Enfoque del Programa Oficial[span_1](start_span)[span_1](end_span)</h2>`,
       ejercicios: [
         {
           tipo: "interactivo",
@@ -391,7 +243,7 @@
     },
     m3: {
       titulo: "Bloque 3: Funciones Exponenciales y Logarítmicas",
-      teoria: `<h2>3. Definiciones y Relación Inversa</h2>`,
+      teoria: `<h2>3. Definiciones y Relación Inversa[span_2](start_span)[span_2](end_span)</h2>`,
       ejercicios: [
         {
           tipo: "interactivo",
@@ -402,7 +254,7 @@
     },
     m4: {
       titulo: "Bloque 4: Sistemas de Ecuaciones Lineales 3×3",
-      teoria: `<h2>4. Enfoque Algebraico y Geométrico</h2>`,
+      teoria: `<h2>4. Enfoque Algebraico y Geométrico[span_3](start_span)[span_3](end_span)</h2>`,
       ejercicios: [
         {
           tipo: "guiado",
@@ -413,7 +265,7 @@
     },
     m5: {
       titulo: "Bloque 5: Geometría y Trigonometría",
-      teoria: `<h2>5. Geometría Avanzada</h2>`,
+      teoria: `<h2>5. Geometría Avanzada[span_4](start_span)[span_4](end_span)</h2>`,
       ejercicios: [
         {
           tipo: "guiado",
@@ -431,7 +283,8 @@
 
     let html = `
       <div class="teoria-box">
-        <h2>${mod.titulo}</h2>${mod.teoria}
+        <h2>${mod.titulo}</h2>
+        ${mod.teoria}
       </div>
     `;
 
@@ -464,7 +317,7 @@
 
       if (ej.tipo === 'interactivo') {
         if (preguntasRespondidas >= 3) {
-                    html += `
+          html += `
             <div class="paywall-box">
               <h3>🔒 ¡Alcanzaste el límite de 3 preguntas gratis!</h3>
               <p>Para seguir practicando con exámenes reales y asegurar tu nota, contratá clases personalizadas con el profesor.</p>
@@ -481,7 +334,7 @@
                 💳 Pagar Clases con Mercado Pago
               </a>
 
-              <a class="btn btn-whatsapp" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Ya realicé el pago de 1 clase(s) por Mercado Pago y quiero coordinar día y hora.')}" target="_blank">
+              <a id="link-wsp-paywall" class="btn btn-whatsapp" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Ya realicé el pago de 1 clase(s) por Mercado Pago y quiero coordinar día y hora.')}" target="_blank">
                 💬 Ya pagué, coordinar por WhatsApp
               </a>
             </div>
@@ -515,8 +368,7 @@
     if (window.renderMathInElement) renderMathInElement(document.body);
     window.scrollTo(0, 0);
   }
-
-  function verificarRespuesta(idEj, correcta) {
+    function verificarRespuesta(idEj, correcta) {
     const input = document.getElementById(`input_${idEj}`);
     const feedback = document.getElementById(`feedback_${idEj}`);
     const valorUsuario = input.value.trim();
@@ -557,14 +409,20 @@
     if (cantidadClases < 1) cantidadClases = 1;
     if (cantidadClases > 10) cantidadClases = 10;
 
-    document.getElementById("cant-clases").innerText = cantidadClases;
-    document.getElementById("total-precio").innerText = cantidadClases * VALOR_CLASE;
+    const elemCant = document.getElementById("cant-clases");
+    const elemPrecio = document.getElementById("total-precio");
+    const elemLinkMp = document.getElementById("link-mp");
+    const elemLinkWsp = document.getElementById("link-wsp-paywall");
+
+    if (elemCant) elemCant.innerText = cantidadClases;
+    if (elemPrecio) elemPrecio.innerText = cantidadClases * VALOR_CLASE;
     
-    document.getElementById("link-mp").href = LINKS_MERCADOPAGO[cantidadClases];
+    if (elemLinkMp && LINKS_MERCADOPAGO[cantidadClases]) {
+      elemLinkMp.href = LINKS_MERCADOPAGO[cantidadClases];
+    }
     
-    const linkWsp = document.querySelector('.paywall-box .btn-whatsapp');
-    if(linkWsp) {
-      linkWsp.href = `https://wa.me/${TELEFONO_PROFE}?text=` + encodeURIComponent(`Hola Profe! Ya realicé el pago de ${cantidadClases} clase(s) por Mercado Pago y quiero coordinar día y hora.`);
+    if (elemLinkWsp) {
+      elemLinkWsp.href = `https://wa.me/${TELEFONO_PROFE}?text=` + encodeURIComponent(`Hola Profe! Ya realicé el pago de ${cantidadClases} clase(s) por Mercado Pago y quiero coordinar día y hora.`);
     }
   }
 
@@ -581,5 +439,3 @@
 
 </body>
 </html>
-
-            
