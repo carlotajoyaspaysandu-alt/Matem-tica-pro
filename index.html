@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0f172a" />
   <title>Matemática 1° EMS (4° Liceo) | Preparación de Exámenes - Uruguay</title>
   
-  <!-- KaTeX para renderizar fórmulas matemáticas con tipografía formal -->
+  <!-- KaTeX para renderizar fórmulas matemáticas -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
@@ -20,10 +20,13 @@
       --primary: #38bdf8;
       --primary-dark: #0284c7;
       --whatsapp: #25d366;
+      --mercadopago: #009ee3;
       --text: #f8fafc;
       --muted: #94a3b8;
       --border: #334155;
       --accent: #f59e0b;
+      --error: #ef4444;
+      --success: #22c55e;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
@@ -43,7 +46,7 @@
 
     .container { max-width: 780px; margin: 0 auto; padding: 20px 16px; }
 
-    /* Menú Principal de Módulos (Alineado al Programa Oficial DGES) */
+    /* Menú Principal de Módulos */
     .grid-modulos { display: grid; gap: 14px; }
     .modulo-card {
       background: var(--card);
@@ -99,7 +102,7 @@
       font-size: 0.88rem;
     }
 
-    /* Reproductor de Audio del Profesor */
+    /* Reproductor de Audio */
     .audio-profe {
       background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
       border: 1px solid var(--accent);
@@ -126,7 +129,7 @@
     .audio-info p { font-size: 0.78rem; color: var(--muted); margin-bottom: 8px; }
     audio { width: 100%; height: 32px; filter: invert(90%) hue-rotate(180deg); }
 
-    /* Tarjetas de Ejercicios */
+    /* Tarjetas de Ejercicios y Zonas Interactivas */
     .ejercicio-card {
       background: var(--card);
       border: 1px solid var(--border);
@@ -151,8 +154,71 @@
       border: 1px dashed var(--primary);
       font-size: 0.86rem;
     }
+    
+    /* Autocorrector interactivo */
+    .interactive-box {
+      margin-top: 12px;
+      padding: 14px;
+      background: #0f172a;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .interactive-input {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      width: 100px;
+      text-align: center;
+      margin-right: 8px;
+    }
+    .interactive-input.error { border-color: var(--error); background: rgba(239, 68, 68, 0.1); }
+    .interactive-input.success { border-color: var(--success); background: rgba(34, 197, 94, 0.1); }
+    .feedback-msg {
+      margin-top: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    .feedback-msg.error { color: var(--error); }
+    .feedback-msg.success { color: var(--success); }
 
-    /* Botones y Embudo de WhatsApp */
+    /* Caja de Bloqueo por Límite de Preguntas Gratuitas */
+    .paywall-box {
+      background: linear-gradient(135deg, #1e293b 100%, #0f172a 0%);
+      border: 2px solid var(--mercadopago);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      margin-top: 16px;
+    }
+    .paywall-box h3 { color: var(--mercadopago); font-size: 1.1rem; margin-bottom: 8px; }
+    .paywall-box p { font-size: 0.88rem; color: var(--muted); margin-bottom: 16px; }
+
+    /* Selector de Clases (+ y -) */
+    .counter-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .counter-btn {
+      background: var(--card-hover);
+      color: var(--text);
+      border: 1px solid var(--border);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+    .counter-btn:hover { background: var(--primary); color: #0f172a; }
+    .counter-value { font-size: 1.1rem; font-weight: bold; min-width: 30px; text-align: center; }
+
+    /* Botones y Mercadopago / WhatsApp */
     .btn-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
     .btn {
       padding: 10px 14px;
@@ -167,11 +233,21 @@
       gap: 6px;
     }
     .btn-primary { background: var(--primary); color: #0f172a; }
-    .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text); }
-    .btn-outline:hover { background: var(--card-hover); }
+    .btn-mercadopago { background: var(--mercadopago); color: #fff; font-weight: 700; width: 100%; justify-content: center; padding: 12px; text-decoration: none; border-radius: 8px; display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; }
     .btn-whatsapp { background: var(--whatsapp); color: #052e16; font-weight: 700; width: 100%; justify-content: center; margin-top: 16px; padding: 12px; }
 
     .seccion-titulo { font-size: 1.05rem; color: var(--primary); margin: 24px 0 12px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+    
+    .contador-gratis {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid var(--primary);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--primary);
+      display: inline-block;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -183,10 +259,10 @@
 
 <div class="container">
 
-  <!-- MENÚ PRINCIPAL CON LOS BLOQUES OFICIALES DEL PROGRAMA -->
+  <!-- MENÚ PRINCIPAL -->
   <section id="menu-principal">
     <p style="color: var(--muted); margin-bottom: 16px; font-size: 0.88rem;">
-      Seleccioná un bloque temático oficial del programa 2026 para estudiar la teoría, escuchar los audios del profesor y realizar ejercicios prácticos de examen.
+      Seleccioná un bloque temático oficial del programa para estudiar la teoría, escuchar los audios del profesor y practicar con preguntas interactivas.
     </p>
 
     <div class="grid-modulos">
@@ -246,19 +322,33 @@
 </div>
 
 <script>
-  // Tu número de WhatsApp configurado para recibir las consultas desde la app
   const TELEFONO_PROFE = "59896643887"; // 096 643 887
+
+  // Enlaces de Mercado Pago configurados para cada cantidad de clases (de 1 a 10)
+  const LINKS_MERCADOPAGO = {
+    1: "https://link.mercadopago.com.uy/tuprecio", // Reemplazá este si tenés el link específico de 1 clase ($300)
+    2: "https://mpago.la/1ic1ZyD", // 2 clases ($600)
+    3: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 3 clases ($900)
+    4: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 4 clases ($1.200)
+    5: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 5 clases ($1.500)
+    6: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 6 clases ($1.800)
+    7: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 7 clases ($2.100)
+    8: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 8 clases ($2.400)
+    9: "https://mpago.la/1ic1ZyD", // Reemplazá con el link real de 9 clases ($2.700)
+    10: "https://mpago.la/1ic1ZyD" // Reemplazá con el link real de 10 clases ($3.000)
+  };
+
+  // Control de preguntas gratuitas (máximo 3)
+  let preguntasRespondidas = parseInt(localStorage.getItem("preguntasRespondidas") || "0");
 
   const datosModulos = {
     m1: {
       titulo: "Bloque 1: Interpretación Gráfica de Funciones Reales",
       teoria: `
         <h2>1. Objetivos y Metodología Oficial</h2>
-        <p>Según el programa de EMS, el foco principal está en leer, extraer y justificar información directamente de las representaciones gráficas antes de pasar al análisis algebraico formal[span_0](start_span)[span_0](end_span).</p>
+        <p>Según el programa de EMS, el foco principal está en leer, extraer y justificar información directamente de las representaciones gráficas antes de pasar al análisis algebraico formal.</p>
         <div class="paso-item"><strong>Dominio e Imagen:</strong> Lectura directa sobre los ejes X e Y de los valores reales válidos para la función.</div>
         <div class="paso-item"><strong>Raíces y Ordenada:</strong> Puntos de corte con el eje horizontal ($f(x)=0$) y con el eje vertical ($f(0)$).</div>
-        <div class="paso-item"><strong>Crecimiento y Extremos:</strong> Identificación de intervalos donde la curva sube o baja, reconociendo máximos y mínimos relativos[span_1](start_span)[span_1](end_span).</div>
-        <div class="paso-item"><strong>Asíntotas:</strong> Comportamiento extremo y tendencias hacia el infinito o puntos de no existencia[span_2](start_span)[span_2](end_span).</div>
       `,
       audio: {
         titulo: "Audio del Profesor: Explicación de la Función Exponencial",
@@ -267,133 +357,68 @@
       },
       ejercicios: [
         {
-          tipo: "guiado",
-          enunciado: "Ejercicio 1 (Guiado): A partir de una función racional homográfica, identificar dominio y asíntotas para $$f(x) = \\frac{2x - 4}{x + 1}$$",
-          solucion: `
-            <strong>Resolución paso a paso:</strong><br>
-            1. <strong>Dominio:</strong> Se excluye la anulación del denominador: $x + 1 = 0 \\Rightarrow x = -1$. $D(f) = \\mathbb{R} - \\{-1\\}$[span_3](start_span)[span_3](end_span).<br>
-            2. <strong>Asíntota Vertical:</strong> $x = -1$.<br>
-            3. <strong>Asíntota Horizontal:</strong> Cociente de coeficientes principales $y = \\frac{2}{1} = 2$.<br>
-            4. <strong>Raíz:</strong> $2x - 4 = 0 \\Rightarrow x = 2$.
-          `
+          tipo: "interactivo",
+          enunciado: "Pregunta 1: Hallar la <strong>raíz</strong> de la función $$f(x) = \\frac{2x - 4}{x + 1}$$",
+          respuestaCorrecta: "2"
         },
         {
-          tipo: "propuesto",
-          enunciado: "Ejercicio 2 (Propuesto): Analizar el gráfico de una función polinómica de 2° grado y determinar intervalos de crecimiento, decrecimiento y extremos.",
-          id: "m1_ej2"
+          tipo: "interactivo",
+          enunciado: "Pregunta 2: Hallar la <strong>ordenada en el origen</strong> de $$f(x) = \\frac{2x - 4}{x + 1}$$",
+          respuestaCorrecta: "-4"
+        },
+        {
+          tipo: "interactivo",
+          enunciado: "Pregunta 3: Hallar el valor de la <strong>asíntota horizontal</strong> de $$f(x) = \\frac{2x - 4}{x + 1}$$",
+          respuestaCorrecta: "2"
+        },
+        {
+          tipo: "interactivo",
+          enunciado: "Pregunta 4 (Evaluación Avanzada): Hallar la abscisa del punto donde la función corta al eje horizontal en $$g(x) = 3x - 6$$",
+          respuestaCorrecta: "2"
         }
       ]
     },
     m2: {
       titulo: "Bloque 2: Resolución de Ecuaciones e Inecuaciones Gráficas",
-      teoria: `
-        <h2>2. Enfoque del Programa Oficial</h2>
-        <p>La resolución de ecuaciones e inecuaciones se plantea como una lectura directa de las curvas, observando intersecciones o regiones donde una gráfica se encuentra por encima o por debajo de otra[span_4](start_span)[span_4](end_span).</p>
-        <div class="paso-item"><strong>Ecuaciones del tipo $f(x) = g(x)$:</strong> Buscar visualmente los puntos de intersección entre las curvas.</div>
-        <div class="paso-item"><strong>Inecuaciones del tipo $f(x) > g(x)$:</strong> Determinar los intervalos del eje X donde el gráfico de $f$ está ubicado arriba de $g$.</div>
-      `,
-      audio: {
-        titulo: "Audio del Profesor: Claves para escribir conjuntos solución en intervalos",
-        desc: "Pautas formales sobre el uso de paréntesis abiertos y corchetes cerrados exigidos en los exámenes.",
-        src: "audio_bloque2.mp3" // Podés reemplazarlo cuando subas el siguiente audio
-      },
+      teoria: `<h2>2. Enfoque del Programa Oficial</h2>`,
       ejercicios: [
         {
-          tipo: "guiado",
-          enunciado: "Ejercicio 1 (Guiado): Resolver gráficamente la inecuación racional $$\\frac{x - 3}{x + 2} \\geq 0$$",
-          solucion: `
-            <strong>Resolución paso a paso:</strong><br>
-            1. Restricción del denominador: $x \\neq -2$.<br>
-            2. Raíz del numerador: $x = 3$.<br>
-            3. Analizando los signos de los intervalos, el conjunto solución es: $S = (-\\infty, -2) \\cup [3, +\\infty)$[span_5](start_span)[span_5](end_span).
-          `
-        },
-        {
-          tipo: "propuesto",
-          enunciado: "Ejercicio 2 (Propuesto): Hallar los valores de $x$ tales que $f(x) < g(x)$ dadas dos funciones lineales y cuadráticas en un gráfico de examen.",
-          id: "m2_ej2"
+          tipo: "interactivo",
+          enunciado: "Pregunta de Práctica: Indicar el valor de la raíz del numerador en $f(x) = \\frac{x - 3}{x + 2}$",
+          respuestaCorrecta: "3"
         }
       ]
     },
     m3: {
       titulo: "Bloque 3: Funciones Exponenciales y Logarítmicas",
-      teoria: `
-        <h2>3. Definiciones y Relación Inversa</h2>
-        <p>Se aborda el crecimiento y decrecimiento exponencial[span_6](start_span)[span_6](end_span), introduciendo el logaritmo como la operación inversa que "revierte" el efecto de la potenciación[span_7](start_span)[span_7](end_span).</p>
-        <div class="paso-item"><strong>Condición de Existencia:</strong> En funciones logarítmicas, el argumento debe ser estrictamente positivo ($>0$), generando inecuaciones para hallar el dominio[span_8](start_span)[span_8](end_span).</div>
-        <div class="paso-item"><strong>Propiedades:</strong> Aplicación de leyes de exponentes y logaritmos para simplificar ecuaciones[span_9](start_span)[span_9](end_span).</div>
-      `,
-      audio: {
-        titulo: "Audio del Profesor: El peligro de olvidar la condición de existencia",
-        desc: "Consejos clave para evitar perder puntos por raíces extrañas en ecuaciones logarítmicas.",
-        src: "audio_bloque3.mp3"
-      },
+      teoria: `<h2>3. Definiciones y Relación Inversa</h2>`,
       ejercicios: [
         {
-          tipo: "guiado",
-          enunciado: "Ejercicio 1 (Guiado): Resolver la ecuación exponencial $$2^{2x} - 5 \\cdot 2^x + 4 = 0$$",
-          solucion: `
-            <strong>Resolución paso a paso:</strong><br>
-            1. Cambio de variable: sea $z = 2^x$ ($z > 0$).<br>
-            2. Cuadrática resultante: $z^2 - 5z + 4 = 0 \\Rightarrow z_1 = 1, z_2 = 4$.<br>
-            3. Deshaciendo el cambio: $2^x = 1 \\Rightarrow x = 0$ y $2^x = 4 \\Rightarrow x = 2$. $S = \\{0, 2\\}$.
-          `
-        },
-        {
-          tipo: "propuesto",
-          enunciado: "Ejercicio 2 (Propuesto): Resolver aplicando propiedades: $\\log_2(x) + \\log_2(x - 2) = 3$",
-          id: "m3_ej2"
+          tipo: "interactivo",
+          enunciado: "Pregunta de Práctica: Resolver $2^x = 8$. ¿Cuánto vale $x$?",
+          respuestaCorrecta: "3"
         }
       ]
     },
     m4: {
       titulo: "Bloque 4: Sistemas de Ecuaciones Lineales 3×3",
-      teoria: `
-        <h2>4. Enfoque Algebraico y Geométrico</h2>
-        <p>Cada ecuación lineal con tres incógnitas representa un plano en el espacio. Resolver un sistema $3\\times3$ equivale a estudiar la intersección de dichos planos[span_10](start_span)[span_10](end_span).</p>
-        <div class="paso-item"><strong>Método de Reducción (Gauss):</strong> Eliminar progresivamente una incógnita entre pares de ecuaciones para reducirlo a un sistema $2\\times2$[span_11](start_span)[span_11](end_span).</div>
-        <div class="paso-item"><strong>Clasificación:</strong> Compatible Determinado (solución única), Compatible Indeterminado (infinitas soluciones) o Incompatible (sin solución)[span_12](start_span)[span_12](end_span)[span_13](start_span)[span_13](end_span).</div>
-      `,
+      teoria: `<h2>4. Enfoque Algebraico y Geométrico</h2>`,
       ejercicios: [
         {
           tipo: "guiado",
-          enunciado: "Ejercicio 1 (Guiado): Resolver el sistema lineal:\n$\\begin{cases} x + y + z = 6 \\\\ 2x - y + 3z = 14 \\\\ x + 2y - z = 2 \\end{cases}$",
-          solucion: `
-            <strong>Resolución paso a paso:</strong><br>
-            1. Aplicando operaciones algebraicas equivalentes (método de Gauss), se escaleriza el sistema.<br>
-            2. Se despejan las incógnitas de abajo hacia arriba obteniendo la terna solución: $x = 1, y = 2, z = 3$.
-          `
-        },
-        {
-          tipo: "propuesto",
-          enunciado: "Ejercicio 2 (Propuesto): Clasificar y resolver un sistema $3\\times3$ donde los planos resulten paralelos (sistema incompatible).",
-          id: "m4_ej2"
+          enunciado: "Ejemplo Resuelto: Sistema lineal 3x3",
+          solucion: "Solución terna: x = 1, y = 2, z = 3."
         }
       ]
     },
     m5: {
-      titulo: "Bloque 5: Geometría, Trigonometría y Lugares Geométricos",
-      teoria: `
-        <h2>5. Geometría Avanzada en 4° Año</h2>
-        <p>Estudio de ángulos en la circunferencia, arco capaz, y resolución de triángulos oblicuángulos mediante los teoremas del seno y del coseno[span_14](start_span)[span_14](end_span)[span_15](start_span)[span_15](end_span).</p>
-        <div class="paso-item"><strong>Teorema del Seno:</strong> $\\frac{a}{\\operatorname{sen}(A)} = \\frac{b}{\\operatorname{sen}(B)} = \\frac{c}{\\operatorname{sen}(C)}$[span_16](start_span)[span_16](end_span).</div>
-        <div class="paso-item"><strong>Teorema del Coseno:</strong> $a^2 = b^2 + c^2 - 2bc \\cdot \\cos(\\hat{A})$[span_17](start_span)[span_17](end_span).</div>
-      `,
+      titulo: "Bloque 5: Geometría y Trigonometría",
+      teoria: `<h2>5. Geometría Avanzada</h2>`,
       ejercicios: [
         {
           tipo: "guiado",
-          enunciado: "Ejercicio 1 (Guiado): Hallar la ecuación de la mediatriz del segmento con extremos $A(1, 2)$ y $B(5, 6)$.",
-          solucion: `
-            <strong>Resolución paso a paso:</strong><br>
-            1. Punto medio $M(3, 4)$.<br>
-            2. Pendiente de $AB = 1$, por lo tanto la pendiente perpendicular es $m = -1$.<br>
-            3. Ecuación punto-pendiente: $y - 4 = -1(x - 3) \\Rightarrow y = -x + 7$.
-          `
-        },
-        {
-          tipo: "propuesto",
-          enunciado: "Ejercicio 2 (Propuesto): Resolver un triángulo oblicuángulo conociendo dos lados y el ángulo comprendido aplicando el Teorema del Coseno.",
-          id: "m5_ej2"
+          enunciado: "Ejemplo Resuelto: Mediatriz",
+          solucion: "Ecuación: y = -x + 7."
         }
       ]
     }
@@ -406,8 +431,7 @@
 
     let html = `
       <div class="teoria-box">
-        <h2>${mod.titulo}</h2>
-        ${mod.teoria}
+        <h2>${mod.titulo}</h2>${mod.teoria}
       </div>
     `;
 
@@ -427,47 +451,121 @@
       `;
     }
 
-    html += `<div class="seccion-titulo">Práctica Orientada para Examen</div>`;
+    html += `<div class="seccion-titulo">Práctica Interactiva y Exámenes</div>`;
 
     mod.ejercicios.forEach((ej, index) => {
-      const idEj = ej.id || `ej_${id}_${index}`;
+      const idEj = `ej_${id}_${index}`;
+      
       html += `
         <div class="ejercicio-card">
-          <span class="modulo-tag">${ej.tipo === 'guiado' ? 'Ejemplo Resuelto' : 'Ejercicio Propuesto'}</span>
+          <span class="modulo-tag">${ej.tipo === 'interactivo' ? 'Pregunta Práctica' : 'Ejemplo Resuelto'}</span>
           <div class="enunciado">${ej.enunciado}</div>
       `;
 
-      if (ej.tipo === 'guiado') {
+      if (ej.tipo === 'interactivo') {
+        if (preguntasRespondidas >= 3) {
+                    html += `
+            <div class="paywall-box">
+              <h3>🔒 ¡Alcanzaste el límite de 3 preguntas gratis!</h3>
+              <p>Para seguir practicando con exámenes reales y asegurar tu nota, contratá clases personalizadas con el profesor.</p>
+              
+              <div style="font-weight: 600; font-size: 0.95rem; margin-top: 10px;">¿Cuántas clases querés? ($300 c/u)</div>
+              <div class="counter-container">
+                <button class="counter-btn" onclick="cambiarCantidad(-1)">-</button>
+                <span id="cant-clases" class="counter-value">1</span>
+                <button class="counter-btn" onclick="cambiarCantidad(1)">+</button>
+              </div>
+              <div style="font-size: 0.85rem; color: var(--muted);">Total a pagar: $<span id="total-precio">300</span>UYU</div>
+
+              <a id="link-mp" class="btn-mercadopago" href="${LINKS_MERCADOPAGO[1]}" target="_blank">
+                💳 Pagar Clases con Mercado Pago
+              </a>
+
+              <a class="btn btn-whatsapp" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Ya realicé el pago de 1 clase(s) por Mercado Pago y quiero coordinar día y hora.')}" target="_blank">
+                💬 Ya pagué, coordinar por WhatsApp
+              </a>
+            </div>
+          `;
+        } else {
+          html += `
+            <div class="contador-gratis">Pregunta gratuita N.º ${preguntasRespondidas + 1} de 3</div>
+            <div class="interactive-box">
+              <label style="font-size: 0.88rem; display:block; margin-bottom:6px;">Tu respuesta numérica:</label>
+              <div style="display:flex; align-items:center; flex-wrap:wrap; gap:8px;">
+                <input type="text" id="input_${idEj}" class="interactive-input" placeholder="Ej. 2 o -4">
+                <button class="btn btn-primary" onclick="verificarRespuesta('${idEj}', '${ej.respuestaCorrecta}')">Comprobar</button>
+              </div>
+              <div id="feedback_${idEj}" class="feedback-msg"></div>
+            </div>
+          `;
+        }
+      } else {
         html += `
           <div class="btn-group">
             <button class="btn btn-primary" onclick="toggleSol('${idEj}')">👁️ Ver Solución Paso a Paso</button>
           </div>
           <div id="${idEj}" class="solucion-box hidden">${ej.solucion}</div>
         `;
-      } else {
-        html += `
-          <p style="font-size: 0.83rem; color: var(--muted); margin-top: 8px;">Intentá resolver este ejercicio en tu cuaderno siguiendo el método oficial. Si te trancás, enviamelo directo:</p>
-          <div class="btn-group">
-            <a class="btn btn-whatsapp" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Estaba intentando resolver el ' + ej.enunciado + ' en la app y me trancé. ¿Me ayudas?')}" 
-            taprget=" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Estaba intentando resolver el ' + ej.enunciado + ' en la app y me trancé. ¿Me ayudas?')}" target="_blank">
-              💬 Consultar este ejercicio con el Profesor (WhatsApp)
-            </a>
-          </div>
-        `;
       }
 
       html += `</div>`;
     });
 
-    html += `
-      <a class="btn btn-whatsapp" style="margin-top: 24px;" href="https://wa.me/${TELEFONO_PROFE}?text=${encodeURIComponent('Hola Profe! Estudié el ' + mod.titulo + ' en la app y quiero coordinar una clase de consulta por Zoom.')}" target="_blank">
-        🚀 Coordinar Clase Particular por Zoom sobre este Bloque
-      </a>
-    `;
-
     document.getElementById("contenido-modulo-dinamico").innerHTML = html;
     if (window.renderMathInElement) renderMathInElement(document.body);
     window.scrollTo(0, 0);
+  }
+
+  function verificarRespuesta(idEj, correcta) {
+    const input = document.getElementById(`input_${idEj}`);
+    const feedback = document.getElementById(`feedback_${idEj}`);
+    const valorUsuario = input.value.trim();
+
+    if (valorUsuario === "") {
+      input.className = "interactive-input error";
+      feedback.className = "feedback-msg error";
+      feedback.innerHTML = "⚠️ Por favor ingresá un valor.";
+      return;
+    }
+
+    if (valorUsuario === correcta) {
+      input.className = "interactive-input success";
+      feedback.className = "feedback-msg success";
+      feedback.innerHTML = "✅ ¡Correcto!";
+    } else {
+      input.className = "interactive-input error";
+      feedback.className = "feedback-msg error";
+      feedback.innerHTML = "❌ Incorrecto.";
+    }
+
+    preguntasRespondidas++;
+    localStorage.setItem("preguntasRespondidas", preguntasRespondidas);
+
+    if (preguntasRespondidas >= 3) {
+      setTimeout(() => {
+        alert("¡Has completado tus 3 preguntas gratuitas! A continuación se abrirán las opciones de clases personalizadas.");
+        location.reload();
+      }, 1200);
+    }
+  }
+
+  let cantidadClases = 1;
+  const VALOR_CLASE = 300;
+
+  function cambiarCantidad(cambio) {
+    cantidadClases += cambio;
+    if (cantidadClases < 1) cantidadClases = 1;
+    if (cantidadClases > 10) cantidadClases = 10;
+
+    document.getElementById("cant-clases").innerText = cantidadClases;
+    document.getElementById("total-precio").innerText = cantidadClases * VALOR_CLASE;
+    
+    document.getElementById("link-mp").href = LINKS_MERCADOPAGO[cantidadClases];
+    
+    const linkWsp = document.querySelector('.paywall-box .btn-whatsapp');
+    if(linkWsp) {
+      linkWsp.href = `https://wa.me/${TELEFONO_PROFE}?text=` + encodeURIComponent(`Hola Profe! Ya realicé el pago de ${cantidadClases} clase(s) por Mercado Pago y quiero coordinar día y hora.`);
+    }
   }
 
   function volverMenu() {
@@ -483,3 +581,5 @@
 
 </body>
 </html>
+
+            
